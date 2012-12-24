@@ -7,7 +7,20 @@
 (function (global) {
 	"use strict";
 
-	var api, converter, display, tutorials;
+	var push = typeof history.pushState === "function",
+	    api, converter, display, section, tutorials;
+
+	// Setting back button listener (if valid)
+	if (push) {
+		$.on(window, "popstate", function (e) {
+			var page = location.href.replace(/.*\/|\.html/g, "");
+
+			if (page.isEmpty()) page = "main";
+
+			$.stop(e);
+			section(e.state !== null ? e.state.section : page);
+		}, "history");
+	}
 
 	/**
 	 * Sub-menu click handler
@@ -25,6 +38,17 @@
 		}, function (e) {
 			target.removeClass("loading").html($.label.error.serverError);
 		});
+	};
+
+	/**
+	 * Toggles the visible section
+	 * 
+	 * @param  {String} arg Section to view
+	 * @return {Undefined}  undefined
+	 */
+	section = function (arg) {
+		$("article > section").addClass("hidden");
+		$("#" + arg).removeClass("hidden");
 	};
 
 	// API pages
@@ -86,9 +110,15 @@
 
 		// Navigation
 		$("a.section").on("click", function (e) {
-			$.stop(e);
-			$("article > section").addClass("hidden");
-			$("#" + this.data("section")).removeClass("hidden");
+			var data;
+
+			// Using history.pushHistory() if available
+			if (push) {
+				$.stop(e);
+				data = this.data("section");
+				history.pushState({section: data}, this.textContent, this.href);
+				section(data);
+			}
 		});
 
 		// Tying download anchor to input fields
