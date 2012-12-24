@@ -1,7 +1,7 @@
 // Setting back button listener (if valid)
 if (push) {
 	$.on(window, "popstate", function (e) {
-		var page = location.href.replace(/.*\/|\.html/g, "");
+		var page = location.href.replace(REGEX_URI, "");
 
 		if (page.isEmpty()) page = "main";
 
@@ -12,18 +12,27 @@ if (push) {
 
 // Assets loaded
 $.on("render", function () {
-	var obj     = $("#api"),
-	    ul      = obj.find("ul")[0],
-	    section = obj.find("section.markdown")[0];
+	var targets  = ["api", "tutorials"],
+	    dotproto = /\.prototype/,
+	    proto    = /prototype/,
+	    ab       = false;
 
-	api.each(function (i) {
-		var name = i.replace(/\.prototype/, ""),
-		    a    = ul.create("li").create("a", {"class": (/prototype/.test(i) ? "prototype" : "abaaso"), innerHTML: name, "data-filename": i + ".md", "data-type": "api", title: name});
-		
-		a.on("click", function (e) {
-			section.clear().addClass("loading");
-			display(e, section);
-		}, "menu");
+	targets.each(function (target) {
+		ab          = (target === "api");
+		var obj     = $("#" + target),
+		    ul      = obj.find("ul")[0],
+		    section = obj.find("section.markdown")[0],
+		    array   = ab ? api : tutorials;
+
+		array.each(function (i) {
+			var name = i.replace(dotproto, ""),
+			    a    = ul.create("li").create("a", {"class": (ab ? (proto.test(i) ? "prototype" : "abaaso") : ""), innerHTML: name, "data-filename": i + ".md", "data-type": "api", title: name});
+			
+			a.on("click", function (e) {
+				section.clear().addClass("loading");
+				display(e, section);
+			}, "menu");
+		});
 	});
 
 	converter = new Showdown.converter();
@@ -34,8 +43,8 @@ $.on("render", function () {
 
 // DOM is ready
 $.on("ready", function () {
-	var anchor            = /A/,
-	    download          = $("a[data-section='download']")[0];
+	var anchor   = /A/,
+	    download = $("a[data-section='download']")[0];
 
 	// Navigation
 	$("a.section").on("click", function (e) {
@@ -58,14 +67,14 @@ $.on("ready", function () {
 	// Setting sizes
 	"http://cdn.abaaso.com/abaaso.min.js".headers(function (arg) {
 		var obj  = $("span[data-type='production']")[0],
-		    size = arg["Content-Lenght"] || 0;
+		    size = arg["Content-Length"] || 0;
 
 		if (size > 0) obj.html(obj.html() + " (" + filesize(size, true) + ")");
 	});
 
 	"http://cdn.abaaso.com/abaaso.js".headers(function (arg) {
 		var obj  = $("span[data-type='debugging']")[0],
-		    size = arg["Content-Lenght"] || 0;
+		    size = arg["Content-Length"] || 0;
 
 		if (size > 0) obj.html(obj.html() + " (" + filesize(size, true) + ")");
 	});
