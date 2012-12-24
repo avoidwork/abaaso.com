@@ -1,0 +1,34 @@
+{
+  "name": "abaaso.com",
+  "description": "Website for abaaso",
+  "version": "4.0.1",
+  "homepage": "https://github.com/avoidwork/abaaso.com",
+  "author": {
+    "name": "Jason Mulligan",
+    "email": "jason.mulligan@avoidwork.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/avoidwork/abaaso.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avoidwork/abaaso.com/issues"
+  },
+  "licenses": [
+    {
+      "type": "BSD-3",
+      "url": "https://github.com/avoidwork/abaaso.com/blob/master/LICENSE"
+    }
+  ],
+  "main": "assets/dashboard",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.14"
+  },
+  "keywords": []
+}
