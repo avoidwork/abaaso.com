@@ -7,7 +7,75 @@
 (function (global) {
 	"use strict";
 
+	var api, converter, display, tutorials;
+
+	/**
+	 * Sub-menu click handler
+	 * 
+	 * @param  {Object} e Mouse event
+	 * @return {Undefined} undefined
+	 */
+	display = function (e, target) {
+		var url = "wiki/" + e.target.data("filename");
+		
+		$.stop(e);
+
+		url.get(function (arg) {
+			target.html(converter.makeHtml(arg));
+		}, function (e) {
+			target.html($.label.error.serverError);
+		});
+	};
+
+	// API pages
+	api = ["Array.prototype",
+	       "Element.prototype",
+	       "Function.prototype",
+	       "Number.prototype",
+	       "String.prototype",
+	       "$",
+	       "array",
+	       "client",
+	       "cookie",
+	       "data",
+	       "datalist",
+	       "element",
+	       "events",
+	       "filter",
+	       "json",
+	       "label",
+	       "loading",
+	       "message",
+	       "mouse",
+	       "number",
+	       "observer",
+	       "promise",
+	       "route",
+	       "string",
+	       "timer",
+	       "validate",
+	       "xml"];
+
+	// Tutorials pages
+	tutorials = [];
+
+	// Event listenrs
 	$.on("render", function () {
+		var obj     = $("#api"),
+		    ul      = obj.find("ul")[0],
+		    section = obj.find("section.markdown")[0];
+
+		api.each(function (i) {
+			var name = i.replace(/\.prototype/, ""),
+			    a    = ul.create("li").create("a", {"class": (/prototype/.test(i) ? "prototype" : "abaaso"), innerHTML: name, "data-filename": i + ".md", "data-type": "api", title: name});
+			
+			a.on("click", function (e) {
+				display(e, section);
+			}, "menu");
+		});
+
+		converter = new Showdown.converter();
+
 		$("body").removeClass("opacity");
 	});
 

@@ -67,6 +67,46 @@ section {
 			margin-bottom: 0;
 		}
 	}
+
+	&.list {
+		width: $increment * 5;
+		margin-right: $increment;
+		display: inline-block;
+		float: left;
+		min-height: $increment * 10;
+	}
+
+	&.markdown {
+		float: left;
+		width: 650px;
+		overflow: hidden;
+
+		* {
+			margin-bottom: $increment / 2;
+		}
+
+		h1 {
+			font-size: 40pt;
+		}
+
+		h2 {
+			font-size: 32pt;
+			border-bottom: 1px solid #000;
+		}
+
+		h3 {
+			font-size: 18pt;
+			font-weight: bold !important;
+		}
+
+		pre {
+			border: 1px solid #ccc;
+			background: #f8f8f8;
+			padding: 5px;
+			overflow: auto;
+			font-size: $font - 4 !important;
+		}
+	}
 }
 
 ul {
@@ -141,6 +181,10 @@ fieldset {
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+.gray {
+	color: #ccc;
 }
 
 .hidden {
