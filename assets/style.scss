@@ -80,6 +80,7 @@ section {
 		float: left;
 		width: 650px;
 		overflow: hidden;
+		min-height: 100px;
 
 		* {
 			margin-bottom: $increment / 2;
@@ -189,6 +190,12 @@ fieldset {
 
 .hidden {
 	display: none !important;
+}
+
+.loading {
+	background-image: url(loading.gif);
+	background-repeat: no-repeat;
+	background-position: center; 
 }
 
 .opacity {

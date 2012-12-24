@@ -21,9 +21,9 @@
 		$.stop(e);
 
 		url.get(function (arg) {
-			target.html(converter.makeHtml(arg));
+			target.removeClass("loading").html(converter.makeHtml(arg));
 		}, function (e) {
-			target.html($.label.error.serverError);
+			target.removeClass("loading").html($.label.error.serverError);
 		});
 	};
 
@@ -70,6 +70,7 @@
 			    a    = ul.create("li").create("a", {"class": (/prototype/.test(i) ? "prototype" : "abaaso"), innerHTML: name, "data-filename": i + ".md", "data-type": "api", title: name});
 			
 			a.on("click", function (e) {
+				section.clear().addClass("loading");
 				display(e, section);
 			}, "menu");
 		});
