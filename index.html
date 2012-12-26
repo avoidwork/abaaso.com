@@ -51,14 +51,14 @@
 
 		<div>
 			<ul>
-				<li><input type="radio" name="package" value="http://cdn.abaaso.com/abaaso.min.js" data-type="production" checked> <span data-type="production">Production</span></li>
-				<li><input type="radio" name="package" value="http://cdn.abaaso.com/abaaso.js" data-type="debugging"> <span data-type="debugging">Debugging</span></li>
+				<li><input type="radio" name="package" id="production" value="http://cdn.abaaso.com/abaaso.min.js" data-type="production" checked> <label for="production" data-type="production">Production</label></li>
+				<li><input type="radio" name="package" id="debugging" value="http://cdn.abaaso.com/abaaso.js" data-type="debugging"> <label for="debugging" data-type="debugging">Debugging</label></li>
 			</ul>
 		</div>
 
 		<div>
 			<div class="container">
-				<span class="half">
+				<div class="half">
 					<h2>Features</h2>
 					<ul>
 						<li>Automatic RESTful AJAX</li>
@@ -69,8 +69,8 @@
 						<li>Automatic “no conflict” mode, using a$</li>
 						<li>Evented with a global observer</li>
 					</ul>
-				</span>
-				<span class="half">
+				</div>
+				<div class="half">
 					<h2>Supports</h2>
 					<ul>
 						<li>Microsoft Internet Explorer 8+ (standards mode)</li>
@@ -81,7 +81,7 @@
 						<li>AMD loaders (require.js, cujo.js)</li>
 						<li>node.js &amp; npm (npm install abaaso)</li>
 					</ul>
-				</span>
+				</div>
 			</div>
 		</div>
 
@@ -89,13 +89,24 @@
 			<h2>Current Version</h2>
 			<span id="version">?</span>
 		</div>
+
+		<div>
+			<ul id="social">
+				<li><iframe src="http://ghbtns.com/github-btn.html?user=avoidwork&repo=abaaso&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></li>
+				<li><div class="fb-like" data-href="http://abaaso.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div></li>
+				<li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://abaaso.com" data-text="abaaso RESTful JavaScript application framework" data-via="abaaso">Tweet</a></li>
+				<li><div class="g-plusone" data-size="medium" data-href="http://abaaso.com"></div></li>
+				<li><a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fabaaso.com&media=http%3A%2F%2Fabaaso.com%2Fassets%2Fabaaso.png&description=abaaso%20is%20a%20modern%2C%20lightweight%20Enterprise%20class%20RESTful%20JavaScript%20application%20framework." class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" alt="Pinterest" /></a></li>
+			</ul>
+		</div>
+
 	</section>
 
 	<section id="api" class="hidden">
 		<div class="container">
 			<section class="list">
 				<h2>API</h2>
-				<ul></ul>
+				<ul class="api"><li><a href="wiki/Array.prototype.md" title="Array.prototype" data-filename="Array.prototype.md" data-target="api">Array</a></li><li><a href="wiki/Element.prototype.md" title="Element.prototype" data-filename="Element.prototype.md" data-target="api">Element</a></li><li><a href="wiki/Function.prototype.md" title="Function.prototype" data-filename="Function.prototype.md" data-target="api">Function</a></li><li><a href="wiki/Number.prototype.md" title="Number.prototype" data-filename="Number.prototype.md" data-target="api">Number</a></li><li><a href="wiki/String.prototype.md" title="String.prototype" data-filename="String.prototype.md" data-target="api">String</a></li><li><a href="wiki/$.md" title="$" data-filename="$.md" data-target="api">$</a></li><li><a href="wiki/array.md" title="array" data-filename="array.md" data-target="api">array</a></li><li><a href="wiki/client.md" title="client" data-filename="client.md" data-target="api">client</a></li><li><a href="wiki/cookie.md" title="cookie" data-filename="cookie.md" data-target="api">cookie</a></li><li><a href="wiki/data.md" title="data" data-filename="data.md" data-target="api">data</a></li><li><a href="wiki/datalist.md" title="datalist" data-filename="datalist.md" data-target="api">datalist</a></li><li><a href="wiki/element.md" title="element" data-filename="element.md" data-target="api">element</a></li><li><a href="wiki/events.md" title="events" data-filename="events.md" data-target="api">events</a></li><li><a href="wiki/filter.md" title="filter" data-filename="filter.md" data-target="api">filter</a></li><li><a href="wiki/json.md" title="json" data-filename="json.md" data-target="api">json</a></li><li><a href="wiki/label.md" title="label" data-filename="label.md" data-target="api">label</a></li><li><a href="wiki/loading.md" title="loading" data-filename="loading.md" data-target="api">loading</a></li><li><a href="wiki/message.md" title="message" data-filename="message.md" data-target="api">message</a></li><li><a href="wiki/mouse.md" title="mouse" data-filename="mouse.md" data-target="api">mouse</a></li><li><a href="wiki/number.md" title="number" data-filename="number.md" data-target="api">number</a></li><li><a href="wiki/observer.md" title="observer" data-filename="observer.md" data-target="api">observer</a></li><li><a href="wiki/promise.md" title="promise" data-filename="promise.md" data-target="api">promise</a></li><li><a href="wiki/route.md" title="route" data-filename="route.md" data-target="api">route</a></li><li><a href="wiki/string.md" title="string" data-filename="string.md" data-target="api">string</a></li><li><a href="wiki/timer.md" title="timer" data-filename="timer.md" data-target="api">timer</a></li><li><a href="wiki/validate.md" title="validate" data-filename="validate.md" data-target="api">validate</a></li><li><a href="wiki/xml.md" title="xml" data-filename="xml.md" data-target="api">xml</a></li></ul>
 			</section>
 			<section class="api markdown">
 				<h1>Please use the menu on the left to view the documentation</h1>
@@ -107,21 +118,42 @@
 		<div class="container">
 			<section class="list">
 				<h2>Tutorials</h2>
-				<ul></ul>
+				<ul class="tutorials"><li><a href="wiki/Creating-an-AJAX-request.md" title="Creating an AJAX request" data-filename="Creating-an-AJAX-request.md" data-target="tutorials">Creating an AJAX request</a></li><li><a href="wiki/Creating-an-event-listener.md" title="Creating an event listener" data-filename="Creating-an-event-listener.md" data-target="tutorials">Creating an event listener</a></li><li><a href="wiki/Creating-a-data-store.md" title="Creating a data store" data-filename="Creating-a-data-store.md" data-target="tutorials">Creating a data store</a></li><li><a href="wiki/Creating-a-RESTful-data-store.md" title="Creating a RESTful data store" data-filename="Creating-a-RESTful-data-store.md" data-target="tutorials">Creating a RESTful data store</a></li><li><a href="wiki/Creating-a-data-list.md" title="Creating a data list" data-filename="Creating-a-data-list.md" data-target="tutorials">Creating a data list</a></li><li><a href="wiki/Creating-a-data-list-filter.md" title="Creating a data list filter" data-filename="Creating-a-data-list-filter.md" data-target="tutorials">Creating a data list filter</a></li><li><a href="wiki/Using-events.md" title="Using events" data-filename="Using-events.md" data-target="tutorials">Using events</a></li><li><a href="wiki/Using-promises.md" title="Using promises" data-filename="Using-promises.md" data-target="tutorials">Using promises</a></li><li><a href="wiki/Using-application-states.md" title="Using application states" data-filename="Using-application-states.md" data-target="tutorials">Using application states</a></li></ul>
 			</section>
 			<section class="tutorials markdown">
-				<h1>Coming soon!</h1>
+				<h1>Please use the menu on the left to view a tutorial</h1>
 			</section>
 		</div>
 	</section>
 </article>
 
 <footer>
-	<!-- <iframe src="buttons.html" height="90px" width="950px" frameborder="0"></iframe> -->
-	<p><a href="http://avoidwork.com" title="avoidwork"><img src="assets/avoidwork.png" alt="avoidwork inc." /></a></p>
+	<a href="http://avoidwork.com" title="avoidwork"><img src="assets/avoidwork.png" alt="avoidwork inc." /></a>
 </footer>
 
 <a href="https://github.com/avoidwork/abaaso" class="github" title="Fork me on GitHub"><img src="http://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub" /></a>
+
+<!-- social media elements -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+<script type="text/javascript" src="http://assets.pinterest.com/js/pinit.js"></script>
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
 
 </body>
 </html>

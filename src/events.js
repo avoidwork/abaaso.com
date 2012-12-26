@@ -12,32 +12,14 @@ if (push) {
 
 // Assets loaded
 $.on("render", function () {
-	var targets  = ["api", "tutorials"],
-	    dotproto = /\.prototype/,
-	    proto    = /prototype/,
-	    ab       = false;
-
-	targets.each(function (target) {
-		ab          = (target === "api");
-		var obj     = $("#" + target),
-		    ul      = obj.find("ul")[0],
-		    section = obj.find("section.markdown")[0],
-		    array   = ab ? api : tutorials;
-
-		array.each(function (i) {
-			var name = i.replace(dotproto, ""),
-			    a    = ul.create("li").create("a", {"class": (ab ? (proto.test(i) ? "prototype" : "abaaso") : ""), innerHTML: name, "data-filename": i + ".md", "data-type": "api", title: name});
-			
-			a.on("click", function (e) {
-				section.clear().addClass("loading");
-				display(e, section);
-			}, "menu");
-		});
-	});
-
+	// Caching
 	converter = new Showdown.converter();
 	sections  = $("article > section");
 
+	// Fixing Google Plus positioning (nice code Google!)
+	$(".g-plusone")[0].parentNode.find("> div")[0].css("left", "auto")
+
+	// Showing body
 	$("body").removeClass("opacity");
 });
 
@@ -46,7 +28,7 @@ $.on("ready", function () {
 	var anchor   = /A/,
 	    download = $("a[data-section='download']")[0];
 
-	// Navigation
+	// Page Navigation
 	$("a.section").on("click", function (e) {
 		var data;
 
@@ -59,6 +41,12 @@ $.on("ready", function () {
 		}
 	});
 
+	// Sub-section Navigation
+	$("section.list a").on("click", function (e) {
+		$.stop(e);
+		display(e);
+	});
+
 	// Tying download anchor to input fields
 	$("input[name='package']").on("click", function () {
 		download.attr("href", this.val()).attr("title", "Download " + this.data("type") + " version");
@@ -66,17 +54,23 @@ $.on("ready", function () {
 
 	// Setting sizes
 	"http://cdn.abaaso.com/abaaso.min.js".headers(function (arg) {
-		var obj  = $("span[data-type='production']")[0],
-		    size = arg["Content-Length"] || 0;
+		var size = arg["Content-Length"] || 0,
+		    obj;
 
-		if (size > 0) obj.html(obj.html() + " (" + filesize(size, true) + ")");
+		if (size > 0) {
+			obj = $("label[data-type='production']")[0];
+			obj.html(obj.html() + " (" + filesize(size, true) + ")");
+		}
 	});
 
 	"http://cdn.abaaso.com/abaaso.js".headers(function (arg) {
-		var obj  = $("span[data-type='debugging']")[0],
-		    size = arg["Content-Length"] || 0;
+		var size = arg["Content-Length"] || 0,
+		    obj;
 
-		if (size > 0) obj.html(obj.html() + " (" + filesize(size, true) + ")");
+		if (size > 0) {
+			obj = $("label[data-type='debugging']")[0];
+			obj.html(obj.html() + " (" + filesize(size, true) + ")");
+		}
 	});
 
 	// Setting the version number

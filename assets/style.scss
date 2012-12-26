@@ -122,6 +122,17 @@ fieldset {
 	border: none;
 }
 
+#social {
+	display: inline-block;
+
+	li {
+		float: left;
+		width: 125px;
+		height: 25px;
+		overflow: hidden;
+	}
+}
+
 .box {
 	padding: 2em 0 2em 0;
 	width: 278px;
