@@ -6,17 +6,17 @@
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
- * @version 4.0.2
+ * @version 4.0.3
  */
 
 (function (global) {
-	"use strict";
+"use strict";
 
-	var REGEX_SECTIONS = /^(api|main|tutorials)$/,
-	    REGEX_URI      = /.*\/|\.html/g,
-	    push           = typeof history.pushState === "function",
-	    sections       = [],
-	    api, converter, display, section, tutorials;
+var REGEX_SECTIONS = /^(api|main|tutorials)$/,
+    REGEX_URI      = /.*\/|\.html/g,
+    push           = typeof history.pushState === "function",
+    sections       = [],
+    api, converter, display, section, tutorials;
 
 // API pages
 api = [
