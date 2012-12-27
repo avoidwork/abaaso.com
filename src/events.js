@@ -7,8 +7,8 @@ if (push) {
 		if (page.isEmpty()) page = "main";
 
 		$.stop(e);
-		current = page;
 		section(e.state !== null ? e.state.section : page);
+		current = page;
 		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
 	}, "history");

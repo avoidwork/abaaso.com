@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 
 		files.forEach(function (i) {
 			console.log("Creating " + i + ".html");
-			grunt.file.write(i + ".html", body.replace(RegExp('<section id="' + i + '" class="hidden">'), '<section id="' + i + '">'));
+			grunt.file.write(i + ".html", body.replace(RegExp('<section id="' + i + '" class="hidden">'), '<section id="' + i + '"  class="active">'));
 		});
 	});
 
