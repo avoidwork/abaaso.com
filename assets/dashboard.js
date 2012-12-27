@@ -27,11 +27,8 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
  * @return {Undefined} undefined
  */
 display = function (e) {
-	var url    = "wiki/" + e.target.data("filename"),
-	    target = $("#" + e.target.data("target") + " section.markdown")[0];
-	
 	$.stop(e);
-	$.hash(url);
+	$.hash("wiki/" + e.target.data("filename"));
 };
 
 /**
