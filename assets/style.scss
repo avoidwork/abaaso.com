@@ -28,9 +28,13 @@ body {
 }
 
 header {
-	img {
+	a {
 		margin-right: $increment;
-		vertical-align: middle;
+		display: inline-block;
+
+		img {
+			vertical-align: middle;
+		}
 	}
 
 	h1 {
@@ -106,7 +110,10 @@ section {
 			background: #f8f8f8;
 			padding: 5px;
 			overflow: auto;
-			font-size: $font - 4 !important;
+		}
+
+		code {
+			font-size: $font - 3;
 		}
 	}
 }
