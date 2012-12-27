@@ -7,17 +7,10 @@ if (push) {
 		if (page.isEmpty()) page = "main";
 
 		$.stop(e);
-
-		if (current !== page) {
-			current = page;
-			section(e.state !== null ? e.state.section : page);
-		}
-
+		current = page;
+		section(e.state !== null ? e.state.section : page);
+		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
-		else {
-			if (!content.hasOwnProperty(current)) content[current] = $("#" + current).html()
-			else $("#" + current).html(content[current]);
-		}
 	}, "history");
 }
 
@@ -36,27 +29,24 @@ $.on("render", function () {
 
 // DOM is ready
 $.on("ready", function () {
-	var anchor   = /A/,
-	    download = $("a[data-section='download']")[0];
+	var download = $("a[data-section='download']")[0];
 
-	// Page Navigation
-	$("a.section").on("click", function (e) {
-		var data;
+	if (push) {
+		// Page Navigation
+		$("a.section").on("click", function (e) {
+			var data;
 
-		// Using history.pushHistory() if available
-		if (push) {
 			$.stop(e);
 			data = this.data("section");
 			history.pushState({section: data}, this.textContent, this.href);
 			section(data);
-		}
-	});
+		});
 
-	// Sub-section Navigation
-	$("section.list a").on("click", function (e) {
-		$.stop(e);
-		display(e);
-	});
+		// Changing to hashbangs
+		$("section.list a").each(function (i) {
+			i.attr("href", "#!/wiki/" + i.data("filename"));
+		});
+	}
 
 	// Tying download anchor to input fields
 	$("input[name='package']").on("click", function () {

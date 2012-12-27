@@ -18,7 +18,22 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     sections       = [],
     content        = {},
     current        = "main",
-    api, converter, display, hash, section, tutorials;
+    api, copy, converter, display, hash, section, tutorials;
+
+/**
+ * Gets or sets the copy of a section
+ * 
+ * @param  {String} arg Section
+ * @return {Undefined}  undefined
+ */
+copy = function (arg) {
+	var obj = $("#" + arg + " section.markdown")[0];
+
+	if (typeof obj !== "undefined") {
+		if (!content.hasOwnProperty(arg)) content[arg] = obj.html();
+		else obj.html(content[arg]);
+	}
+};
 
 /**
  * Sub-menu click handler
@@ -43,7 +58,7 @@ hash = function () {
 
 	if (!arg.isEmpty() && valid) {
 		obj = $("section.active section.markdown")[0];
-		obj.addClass("loading").get(arg, function (arg) {
+		obj.clear().addClass("loading").get(arg, function (arg) {
 			obj.removeClass("loading").html(converter.makeHtml(arg));
 		}, function (e) {
 			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
@@ -58,8 +73,12 @@ hash = function () {
  * @return {Undefined}  undefined
  */
 section = function (arg) {
+	var obj;
+
 	if (!REGEX_SECTIONS.test(arg)) location.href = "/";
 	sections.removeClass("active").addClass("hidden");
+	obj = $("#" + current + " section.markdown")[0];
+	if (typeof obj !== "undefined") obj.html(content[current]);
 	$("#" + arg).addClass("active").removeClass("hidden");
 };
 
@@ -72,17 +91,10 @@ if (push) {
 		if (page.isEmpty()) page = "main";
 
 		$.stop(e);
-
-		if (current !== page) {
-			current = page;
-			section(e.state !== null ? e.state.section : page);
-		}
-
+		current = page;
+		section(e.state !== null ? e.state.section : page);
+		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
-		else {
-			if (!content.hasOwnProperty(current)) content[current] = $("#" + current).html()
-			else $("#" + current).html(content[current]);
-		}
 	}, "history");
 }
 
@@ -101,27 +113,24 @@ $.on("render", function () {
 
 // DOM is ready
 $.on("ready", function () {
-	var anchor   = /A/,
-	    download = $("a[data-section='download']")[0];
+	var download = $("a[data-section='download']")[0];
 
-	// Page Navigation
-	$("a.section").on("click", function (e) {
-		var data;
+	if (push) {
+		// Page Navigation
+		$("a.section").on("click", function (e) {
+			var data;
 
-		// Using history.pushHistory() if available
-		if (push) {
 			$.stop(e);
 			data = this.data("section");
 			history.pushState({section: data}, this.textContent, this.href);
 			section(data);
-		}
-	});
+		});
 
-	// Sub-section Navigation
-	$("section.list a").on("click", function (e) {
-		$.stop(e);
-		display(e);
-	});
+		// Changing to hashbangs
+		$("section.list a").each(function (i) {
+			i.attr("href", "#!/wiki/" + i.data("filename"));
+		});
+	}
 
 	// Tying download anchor to input fields
 	$("input[name='package']").on("click", function () {

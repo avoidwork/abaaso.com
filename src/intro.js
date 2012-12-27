@@ -7,4 +7,4 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     sections       = [],
     content        = {},
     current        = "main",
-    api, converter, display, hash, section, tutorials;
+    api, copy, converter, display, hash, section, tutorials;
