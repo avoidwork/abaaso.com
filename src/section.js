@@ -6,6 +6,6 @@
  */
 section = function (arg) {
 	if (!REGEX_SECTIONS.test(arg)) location.href = "/";
-	sections.addClass("hidden");
-	$("#" + arg).removeClass("hidden");
+	sections.removeClass("active").addClass("hidden");
+	$("#" + arg).addClass("active").removeClass("hidden");
 };

@@ -1,12 +1,23 @@
 // Setting back button listener (if valid)
 if (push) {
 	$.on(window, "popstate", function (e) {
-		var page = location.href.replace(REGEX_URI, "");
+		var parsed = $.parse(location.href),
+		    page   = parsed.pathname.replace(REGEX_URI, "");
 
 		if (page.isEmpty()) page = "main";
 
 		$.stop(e);
-		section(e.state !== null ? e.state.section : page);
+
+		if (current !== page) {
+			current = page;
+			section(e.state !== null ? e.state.section : page);
+		}
+
+		if (!parsed.hash.isEmpty()) hash();
+		else {
+			if (!content.hasOwnProperty(current)) content[current] = $("#" + current).html()
+			else $("#" + current).html(content[current]);
+		}
 	}, "history");
 }
 

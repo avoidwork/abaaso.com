@@ -16,7 +16,9 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
     push           = typeof history.pushState === "function",
     sections       = [],
-    api, converter, display, section, tutorials;
+    content        = {},
+    current        = "main",
+    api, converter, display, hash, section, tutorials;
 
 /**
  * Sub-menu click handler
@@ -29,12 +31,27 @@ display = function (e) {
 	    target = $("#" + e.target.data("target") + " section.markdown")[0];
 	
 	$.stop(e);
+	$.hash(url);
+};
 
-	url.get(function (arg) {
-		target.removeClass("loading").html(converter.makeHtml(arg));
-	}, function (e) {
-		target.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
-	});
+/**
+ * Loads the hash if it's a valid submenu item
+ * 
+ * @return {Undefined} undefined
+ */
+hash = function () {
+	var arg   = $.hash(),
+	    valid = ($("section.active a[data-filename='" + arg.replace(/^wiki\//, "") + "']").length > 0),
+	    obj;
+
+	if (!arg.isEmpty() && valid) {
+		obj = $("section.active section.markdown")[0];
+		obj.addClass("loading").get(arg, function (arg) {
+			obj.removeClass("loading").html(converter.makeHtml(arg));
+		}, function (e) {
+			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
+		});
+	}
 };
 
 /**
@@ -45,19 +62,30 @@ display = function (e) {
  */
 section = function (arg) {
 	if (!REGEX_SECTIONS.test(arg)) location.href = "/";
-	sections.addClass("hidden");
-	$("#" + arg).removeClass("hidden");
+	sections.removeClass("active").addClass("hidden");
+	$("#" + arg).addClass("active").removeClass("hidden");
 };
 
 // Setting back button listener (if valid)
 if (push) {
 	$.on(window, "popstate", function (e) {
-		var page = location.href.replace(REGEX_URI, "");
+		var parsed = $.parse(location.href),
+		    page   = parsed.pathname.replace(REGEX_URI, "");
 
 		if (page.isEmpty()) page = "main";
 
 		$.stop(e);
-		section(e.state !== null ? e.state.section : page);
+
+		if (current !== page) {
+			current = page;
+			section(e.state !== null ? e.state.section : page);
+		}
+
+		if (!parsed.hash.isEmpty()) hash();
+		else {
+			if (!content.hasOwnProperty(current)) content[current] = $("#" + current).html()
+			else $("#" + current).html(content[current]);
+		}
 	}, "history");
 }
 

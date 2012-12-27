@@ -5,4 +5,6 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
     push           = typeof history.pushState === "function",
     sections       = [],
-    api, converter, display, section, tutorials;
+    content        = {},
+    current        = "main",
+    api, converter, display, hash, section, tutorials;
