@@ -8,3 +8,6 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     content        = {},
     current        = "main",
     api, copy, converter, display, hash, section, tutorials;
+
+// Setting tabs as 4 spaces
+hljs.tabReplace = "    "; 

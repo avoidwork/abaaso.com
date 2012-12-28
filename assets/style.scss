@@ -106,14 +106,14 @@ section {
 		}
 
 		pre {
-			border: 1px solid #ccc;
-			background: #f8f8f8;
-			padding: 5px;
+			border: 1px solid #000;
+			background: #3F3F3F;
 			overflow: auto;
 		}
 
 		code {
-			font-size: $font - 3;
+			font-size: $font - 4 !important;
+			margin-bottom: 0px;
 		}
 	}
 }
