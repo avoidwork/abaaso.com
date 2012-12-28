@@ -46,27 +46,6 @@ $.on("ready", function () {
 		download.attr("href", this.val()).attr("title", "Download " + this.data("type") + " version");
 	});
 
-	// Setting sizes
-	"http://cdn.abaaso.com/abaaso.min.js".headers(function (arg) {
-		var size = arg["Content-Length"] || 0,
-		    obj;
-
-		if (size > 0) {
-			obj = $("label[data-type='production']")[0];
-			obj.html(obj.html() + " (" + filesize(size, true) + ")");
-		}
-	});
-
-	"http://cdn.abaaso.com/abaaso.js".headers(function (arg) {
-		var size = arg["Content-Length"] || 0,
-		    obj;
-
-		if (size > 0) {
-			obj = $("label[data-type='debugging']")[0];
-			obj.html(obj.html() + " (" + filesize(size, true) + ")");
-		}
-	});
-
 	// Setting the version number
 	$("#version").html($.version);
 
