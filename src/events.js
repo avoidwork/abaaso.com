@@ -14,17 +14,10 @@ if (push) {
 	}, "history");
 }
 
-// Assets loaded
+// Assets are loaded
 $.on("render", function () {
-	// Caching
-	converter = new Showdown.converter();
-	sections  = $("article > section");
-
 	// Fixing Google Plus positioning (nice code Google!)
 	$(".g-plusone")[0].parentNode.find("> div")[0].css("left", "auto")
-
-	// Showing body
-	$("body").removeClass("opacity");
 });
 
 // DOM is ready
@@ -76,4 +69,8 @@ $.on("ready", function () {
 
 	// Setting the version number
 	$("#version").html($.version);
+
+	// Caching
+	converter = new Showdown.converter();
+	sections  = $("article > section");
 });
