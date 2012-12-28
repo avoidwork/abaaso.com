@@ -12,6 +12,10 @@ if (push) {
 		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
 	}, "history");
+
+	$.on("hash", function (arg) {
+		if (!arg.isEmpty()) hash();
+	});
 }
 
 // Assets are loaded
@@ -52,4 +56,7 @@ $.on("ready", function () {
 	// Caching
 	converter = new Showdown.converter();
 	sections  = $("article > section");
+
+	// Explicitly loading hash for all browsers
+	if (!$.parse(location.href).hash.isEmpty()) hash();
 });

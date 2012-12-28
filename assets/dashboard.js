@@ -6,7 +6,7 @@
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
- * @version 4.0.4
+ * @version 4.0.5
  */
 
 (function (global) {
@@ -14,7 +14,7 @@
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
-    push           = typeof history.pushState === "function",
+    push           = $("html")[0].hasClass("history"),
     sections       = [],
     content        = {},
     current        = "main",
@@ -96,6 +96,10 @@ if (push) {
 		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
 	}, "history");
+
+	$.on("hash", function (arg) {
+		if (!arg.isEmpty()) hash();
+	});
 }
 
 // Assets are loaded
@@ -136,6 +140,9 @@ $.on("ready", function () {
 	// Caching
 	converter = new Showdown.converter();
 	sections  = $("article > section");
+
+	// Explicitly loading hash for all browsers
+	if (!$.parse(location.href).hash.isEmpty()) hash();
 });
 
 }(this));
