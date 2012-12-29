@@ -102,11 +102,12 @@ if (push) {
 		copy(current);
 		if (!parsed.hash.isEmpty()) hash();
 	}, "history");
-
-	$.on("hash", function (arg) {
-		if (!arg.isEmpty()) hash();
-	});
 }
+
+// Looking for hashbangs
+$.on("hash", function (arg) {
+	if (!arg.isEmpty()) hash();
+});
 
 // Assets are loaded
 $.on("render", function () {
@@ -128,12 +129,12 @@ $.on("ready", function () {
 			history.pushState({section: data}, this.textContent, this.href);
 			section(data);
 		});
-
-		// Changing to hashbangs
-		$("section.list a").each(function (i) {
-			i.attr("href", "#!/wiki/" + i.data("filename"));
-		});
 	}
+
+	// Changing to hashbangs
+	$("section.list a").each(function (i) {
+		i.attr("href", "#!/wiki/" + i.data("filename"));
+	});
 
 	// Tying download anchor to input fields
 	$("input[name='package']").on("click", function () {
