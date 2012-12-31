@@ -111,8 +111,10 @@ $.on("hash", function (arg) {
 
 // Assets are loaded
 $.on("render", function () {
+	var obj = $(".g-plusone")[0];
+
 	// Fixing Google Plus positioning (nice code Google!)
-	$(".g-plusone")[0].parentNode.find("> div")[0].css("left", "auto")
+	if (obj !== undefined) obj.parentNode.find("> div")[0].css("left", "auto")
 });
 
 // DOM is ready

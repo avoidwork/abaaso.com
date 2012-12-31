@@ -146,6 +146,7 @@ fieldset {
 
 .boxes {
 	display: inline-block;
+	overflow: hidden;
 
 	a[data-section="download"]:hover {
 		background: #ff9627;
@@ -213,12 +214,12 @@ fieldset {
 	display: none !important;
 }
 
+.last {
+	margin-right: 0 !important;
+}
+
 .loading {
 	background-image: url(loading.gif);
 	background-repeat: no-repeat;
 	background-position: center; 
-}
-
-.opacity {
-	opacity: 0;
 }
