@@ -131,7 +131,7 @@ $.on("ready", function () {
 	}
 
 	// Hash API is available
-	if (html.hasClass("hash")) {
+	if (html.hasClass("hashchange")) {
 		// Looking for hashbangs
 		$.on("hash", function (arg) {
 			if (!arg.isEmpty()) hash();
