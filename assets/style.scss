@@ -144,29 +144,6 @@ fieldset {
 	}
 }
 
-.box {
-	padding: 2em 0 2em 0;
-	width: 278px;
-	background: #e4e4e4;
-	text-align: center;
-	font-size: $font + 6;
-	margin-right: $increment;
-	display: inline-block;
-
-	* {
-		vertical-align: middle;
-	}
-
-	&:hover {
-		background: #ccc;
-		color: #fff;
-	}
-
-	&:last-child {
-		margin-right: 0px;
-	}
-}
-
 .boxes {
 	a[data-section="download"]:hover {
 		background: #ff9627;
@@ -178,6 +155,24 @@ fieldset {
 
 	a[data-section="tutorials"]:hover {
 		background: #1dbb52;
+	}
+
+	a:last-child {
+		margin-right: 0;
+	}
+
+	.box {
+		padding: 2em 0 2em 0;
+		width: 278px;
+		background: #e4e4e4;
+		text-align: center;
+		font-size: $font + 6;
+		margin-right: $increment;
+		display: inline-block;
+
+		* {
+			vertical-align: middle;
+		}
 	}
 }
 
