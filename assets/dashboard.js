@@ -133,7 +133,7 @@ $.on("ready", function () {
 	// Hash API is available
 	if (html.hasClass("hashchange")) {
 		// Looking for hashbangs
-		if (!html.hasClass("history")) {
+		if ($.client.opera || !html.hasClass("history")) {
 			$.on("hash", function (arg) {
 				if (!arg.isEmpty()) hash();
 			}, "wiki");
