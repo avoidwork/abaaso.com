@@ -106,7 +106,9 @@ module.exports = function (grunt) {
 			"Creating a data list filter",
 			"Using events",
 			"Using promises",
-			"Using application states"
+			"Using application states",
+			"Iterating an Array",
+			"Iterating an Object"
 		];
 
 		lists.each(function (i) {
