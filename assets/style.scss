@@ -171,6 +171,10 @@ fieldset {
 		margin-right: $increment;
 		display: inline-block;
 
+		&:hover {
+			color: #fff;
+		}
+
 		&:last-child {
 			margin-right: 0;
 		}
