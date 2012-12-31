@@ -6,7 +6,7 @@
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
- * @version 4.0.5
+ * @version 4.0.6
  */
 
 (function (global) {
@@ -14,7 +14,7 @@
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
-    push           = $("html")[0].hasClass("history"),
+    html           = $("html")[0],
     sections       = [],
     content        = {},
     current        = "main",
@@ -88,27 +88,6 @@ section = function (arg) {
 	$("#" + arg).addClass("active").removeClass("hidden");
 };
 
-// Setting back button listener (if valid)
-if (push) {
-	$.on(window, "popstate", function (e) {
-		var parsed = $.parse(location.href),
-		    page   = parsed.pathname.replace(REGEX_URI, "");
-
-		if (page.isEmpty()) page = "main";
-
-		$.stop(e);
-		section(e.state !== null ? e.state.section : page);
-		current = page;
-		copy(current);
-		if (!parsed.hash.isEmpty()) hash();
-	}, "history");
-}
-
-// Looking for hashbangs
-$.on("hash", function (arg) {
-	if (!arg.isEmpty()) hash();
-});
-
 // Assets are loaded
 $.on("render", function () {
 	var obj = $(".g-plusone")[0];
@@ -119,9 +98,27 @@ $.on("render", function () {
 
 // DOM is ready
 $.on("ready", function () {
+	// Caching
+	converter    = new Showdown.converter();
+	sections     = $("article > section");
 	var download = $("a[data-section='download']")[0];
 
-	if (push) {
+	// HTML5 history API is available
+	if (html.hasClass("history")) {
+		// Setting back button listener
+		$.on(window, "popstate", function (e) {
+			var parsed = $.parse(location.href),
+			    page   = parsed.pathname.replace(REGEX_URI, "");
+
+			if (page.isEmpty()) page = "main";
+
+			$.stop(e);
+			section(e.state !== null ? e.state.section : page);
+			current = page;
+			copy(current);
+			if (!parsed.hash.isEmpty()) hash();
+		}, "history");
+
 		// Page Navigation
 		$("a.section").on("click", function (e) {
 			var data;
@@ -133,10 +130,21 @@ $.on("ready", function () {
 		});
 	}
 
-	// Changing to hashbangs
-	$("section.list a").each(function (i) {
-		i.attr("href", "#!/wiki/" + i.data("filename"));
-	});
+	// Hash API is available
+	if (html.hasClass("hash")) {
+		// Looking for hashbangs
+		$.on("hash", function (arg) {
+			if (!arg.isEmpty()) hash();
+		}, "wiki");
+
+		// Changing sub-menu items to use a hashbang
+		$("section.list a").each(function (i) {
+			i.attr("href", "#!/wiki/" + i.data("filename"));
+		});
+
+		// Explicitly loading hash for all browsers
+		if (!$.parse(location.href).hash.isEmpty()) hash();
+	}
 
 	// Tying download anchor to input fields
 	$("input[name='package']").on("click", function () {
@@ -145,13 +153,6 @@ $.on("ready", function () {
 
 	// Setting the version number
 	$("#version").html($.version);
-
-	// Caching
-	converter = new Showdown.converter();
-	sections  = $("article > section");
-
-	// Explicitly loading hash for all browsers
-	if (!$.parse(location.href).hash.isEmpty()) hash();
 });
 
 }(this));

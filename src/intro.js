@@ -3,7 +3,7 @@
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
-    push           = $("html")[0].hasClass("history"),
+    html           = $("html")[0],
     sections       = [],
     content        = {},
     current        = "main",
