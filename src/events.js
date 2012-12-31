@@ -43,9 +43,11 @@ $.on("ready", function () {
 	// Hash API is available
 	if (html.hasClass("hashchange")) {
 		// Looking for hashbangs
-		$.on("hash", function (arg) {
-			if (!arg.isEmpty()) hash();
-		}, "wiki");
+		if (!html.hasClass("history")) {
+			$.on("hash", function (arg) {
+				if (!arg.isEmpty()) hash();
+			}, "wiki");
+		}
 
 		// Changing sub-menu items to use a hashbang
 		$("section.list a").each(function (i) {
