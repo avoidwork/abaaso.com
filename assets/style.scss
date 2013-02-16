@@ -134,6 +134,12 @@ fieldset {
 	border: none;
 }
 
+footer {
+	form {
+		margin: 0 0 $increment 0;
+	}
+}
+
 #social {
 	display: inline-block;
 

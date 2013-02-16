@@ -2,7 +2,7 @@
  * abaaso.com
  *
  * @author Jason Mulligan <jason.mulligan@avoidwork.com>
- * @copyright 2012 Jason Mulligan
+ * @copyright 2013 Jason Mulligan
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
