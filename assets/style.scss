@@ -206,11 +206,6 @@ footer {
 	}
 }
 
-#version {
-	display: inline-block;
-	margin-top: 10px;
-}
-
 .github {
 	position: absolute;
 	top: 0;
@@ -233,4 +228,9 @@ footer {
 	background-image: url(loading.gif);
 	background-repeat: no-repeat;
 	background-position: center; 
+}
+
+.version {
+	display: inline-block;
+	margin-top: 10px;
 }
