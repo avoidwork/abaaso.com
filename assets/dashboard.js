@@ -10,7 +10,7 @@
  */
 
 (function (global) {
-"use strict";
+"use asm";
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
@@ -46,7 +46,7 @@ copy = function (arg) {
  */
 display = function (e) {
 	$.stop(e);
-	$.hash("wiki/" + e.target.data("filename"));
+	$.hash("wiki/" + $.target(e).data("filename"));
 };
 
 /**
@@ -154,7 +154,7 @@ $.on("ready", function () {
 	});
 
 	// Setting the version number
-	$("#version").html($.version);
+	$(".version")[0].html($.version);
 });
 
 }(this));

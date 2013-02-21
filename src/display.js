@@ -6,5 +6,5 @@
  */
 display = function (e) {
 	$.stop(e);
-	$.hash("wiki/" + e.target.data("filename"));
+	$.hash("wiki/" + $.target(e).data("filename"));
 };

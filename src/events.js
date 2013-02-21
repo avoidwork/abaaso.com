@@ -64,5 +64,5 @@ $.on("ready", function () {
 	});
 
 	// Setting the version number
-	$("#version").html($.version);
+	$(".version")[0].html($.version);
 });
