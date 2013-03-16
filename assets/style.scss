@@ -78,7 +78,7 @@ section {
 	}
 
 	&.list {
-		width: $increment * 5;
+		width: $increment * 3;
 		margin-right: $increment;
 		display: inline-block;
 		float: left;
@@ -87,9 +87,9 @@ section {
 
 	&.markdown {
 		float: left;
-		width: 650px;
+		width: $increment * 15;
 		overflow: hidden;
-		min-height: 100px;
+		min-height: $increment * 2;
 
 		* {
 			margin-bottom: $increment / 2;
@@ -125,7 +125,7 @@ section {
 
 ul {
 	li {
-		margin-top: 10px;
+		margin-top: $increment / 5;
 		list-style: none;
 	}
 }
@@ -145,8 +145,8 @@ footer {
 
 	li {
 		float: left;
-		width: 125px;
-		height: 25px;
+		width: $increment * 2.5;
+		height: $increment / 2;
 		overflow: hidden;
 	}
 }
@@ -196,7 +196,7 @@ footer {
 }
 
 .half {
-	width: 450px;
+	width: $increment * 9;
 	margin-right: $increment;
 	display: inline-block;
 	float: left;
@@ -232,5 +232,5 @@ footer {
 
 .version {
 	display: inline-block;
-	margin-top: 10px;
+	margin-top: $increment / 5;
 }
