@@ -1,4 +1,4 @@
-(function (global) {
+(function ($) {
 "use asm";
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,

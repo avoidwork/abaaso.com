@@ -8,6 +8,7 @@ listeners = function () {
 		// Using history.pushHistory() if available
 		if (push) {
 			$.stop(e);
+
 			data = this.data("section");
 			history.pushState({section: data}, this.textContent, this.href);
 			section(data);
@@ -17,6 +18,7 @@ listeners = function () {
 	// Sub-section Navigation
 	$("section.list a").on("click", function (e) {
 		$.stop(e);
+
 		display(e);
 	}, "display");
 

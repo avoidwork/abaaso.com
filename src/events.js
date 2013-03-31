@@ -3,7 +3,9 @@ $.on("render", function () {
 	var obj = $(".g-plusone")[0];
 
 	// Fixing Google Plus positioning (nice code Google!)
-	if (obj !== undefined) obj.parentNode.find("> div")[0].css("left", "auto")
+	if (obj !== undefined) {
+		obj.parentNode.find("> div")[0].css("left", "auto")
+	}
 });
 
 // DOM is ready
@@ -20,13 +22,19 @@ $.on("ready", function () {
 			var parsed = $.parse(location.href),
 			    page   = parsed.pathname.replace(REGEX_URI, "");
 
-			if (page.isEmpty()) page = "main";
+			if (page.isEmpty()) {
+				page = "main";
+			}
 
 			$.stop(e);
+
 			section(e.state !== null ? e.state.section : page);
 			current = page;
 			copy(current);
-			if (!parsed.hash.isEmpty()) hash();
+
+			if (!parsed.hash.isEmpty()) {
+				hash();
+			}
 		}, "history");
 
 		// Page Navigation
@@ -34,6 +42,7 @@ $.on("ready", function () {
 			var data;
 
 			$.stop(e);
+
 			data = this.data("section");
 			history.pushState({section: data}, this.textContent, this.href);
 			section(data);
@@ -45,7 +54,9 @@ $.on("ready", function () {
 		// Looking for hashbangs
 		if ($.client.opera || !html.hasClass("history")) {
 			$.on("hash", function (arg) {
-				if (!arg.isEmpty()) hash();
+				if (!arg.isEmpty()) {
+					hash();
+				}
 			}, "wiki");
 		}
 
@@ -55,7 +66,9 @@ $.on("ready", function () {
 		});
 
 		// Explicitly loading hash for all browsers
-		if (!$.parse(location.href).hash.isEmpty()) hash();
+		if (!$.parse(location.href).hash.isEmpty()) {
+			hash();
+		}
 	}
 
 	// Tying download anchor to input fields

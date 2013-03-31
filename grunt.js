@@ -73,7 +73,7 @@ module.exports = function (grunt) {
 			"Function.prototype",
 			"Number.prototype",
 			"String.prototype",
-			"$",
+			"abaaso",
 			"array",
 			"client",
 			"cookie",

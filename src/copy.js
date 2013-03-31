@@ -7,8 +7,12 @@
 copy = function (arg) {
 	var obj = $("#" + arg + " section.markdown")[0];
 
-	if (typeof obj !== "undefined") {
-		if (!content.hasOwnProperty(arg)) content[arg] = obj.html();
-		else obj.html(content[arg]);
+	if (obj !== undefined) {
+		if (!content.hasOwnProperty(arg)) {
+			content[arg] = obj.html();
+		}
+		else {
+			obj.html(content[arg]);
+		}
 	}
 };
