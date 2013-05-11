@@ -79,7 +79,7 @@ module.exports = function (grunt) {
 			"cookie",
 			"data",
 			"datalist",
-			"defer",
+			"deferred",
 			"element",
 			"events",
 			"filter",
