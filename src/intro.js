@@ -1,5 +1,5 @@
 (function ($) {
-"use asm";
+"use strict";
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,

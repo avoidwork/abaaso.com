@@ -6,11 +6,11 @@
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
- * @version 4.0.7
+ * @version 4.0.8
  */
 
 (function ($) {
-"use asm";
+"use strict";
 
 var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     REGEX_URI      = /.*\/|\.html/g,
@@ -60,14 +60,14 @@ display = function (e) {
  */
 hash = function () {
 	var hash  = $.hash(),
-	    spot  = hash.match(/:(.*)/),
-	    file  = hash.replace(/^wiki\/|\:.*/g, ""),
+	    spot  = hash.match(/#(.*)/),
+	    file  = hash.replace(/^\/wiki\/|\#.*/g, ""),
 	    valid = ($("section.active a[data-filename='" + file + "']").length > 0),
 	    obj;
 
 	if (!hash.isEmpty() && valid) {
 		obj = $("section.active section.markdown")[0];
-		obj.clear().addClass("loading").get(hash.replace(/\:.*/, ""), function (arg) {
+		obj.clear().addClass("loading").get(hash.replace(/\#.*/, ""), function (arg) {
 			var x;
 
 			// Filling in HTML
@@ -80,7 +80,7 @@ hash = function () {
 
 			// Fixing relative wiki links
 			obj.find("a").each(function (i) {
-				i.attr("href", "#!/wiki/" + i.href.replace(/.*\//, "").replace("#", ".md:"));
+				i.attr("href", "#!/wiki/" + i.href.replace(/.*\//, "").replace("#", ".md#"));
 			});
 
 			// Scrolling to target entry
