@@ -1,24 +1,23 @@
-module.exports = function (grunt) {
-	var $ = require("abaaso");
+var $ = require("abaaso");
 
+module.exports = function (grunt) {
 	grunt.initConfig({
-		pkg : "<json:package.json>",
-		meta : {
-			  banner : "/**\n" + 
-					   " * <%= pkg.name %>\n" +
-					   " *\n" +
-					   " * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n" +
-					   " * @copyright <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n" +
-					   " * @license <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>\n" +
-					   " * @link <%= pkg.homepage %>\n" +
-					   " * @module <%= pkg.name %>\n" +
-					   " * @version <%= pkg.version %>\n" +
-					   " */"
-		},
-		concat: {
-			dist: {
+		pkg : grunt.file.readJSON("package.json"),
+		concat : {
+			options : {
+				banner : "/**\n" + 
+				         " * <%= pkg.name %>\n" +
+				         " *\n" +
+				         " * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n" +
+				         " * @copyright <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n" +
+				         " * @license <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>\n" +
+				         " * @link <%= pkg.homepage %>\n" +
+				         " * @module <%= pkg.name %>\n" +
+				         " * @version <%= pkg.version %>\n" +
+				         " */\n"
+			},
+			dist : {
 				src : [
-					"<banner>",
 					"src/intro.js",
 					"src/copy.js",
 					"src/display.js",
@@ -30,12 +29,22 @@ module.exports = function (grunt) {
 				dest : "assets/dashboard.js"
 			}
 		},
-		min : {
-			"assets/dashboard.min.js" : ["<banner>", "assets/dashboard.js"]
+		shell: {
+			closure: {
+				command: "cd assets\nclosure-compiler --js dashboard.js --js_output_file dashboard.min.js --create_source_map ./dashboard.map"
+			},
+			sourcemap: {
+				command: "echo //@ sourceMappingURL=dashboard.map >> assets/dashboard.min.js"
+			}
 		}
 	});
 
-	grunt.registerTask("default", "concat min nav files sitemap");
+	grunt.loadNpmTasks("grunt-shell");
+	grunt.loadNpmTasks("grunt-contrib-concat");
+
+	grunt.registerTask("compress", function () {
+		process.platform !== "win32" ? grunt.task.run("shell") : console.log("Couldn't compress files on your OS")
+	});
 
 	grunt.registerTask("files", function () {
 		var files = ["api", "tutorials"],
@@ -79,7 +88,7 @@ module.exports = function (grunt) {
 			"cookie",
 			"data",
 			"datalist",
-			"deferred",
+			"deferred ",
 			"element",
 			"events",
 			"filter",
@@ -128,5 +137,7 @@ module.exports = function (grunt) {
 			body = body.replace(regex, "$1" + li.join("") + "$3");
 			grunt.file.write(file, body);
 		});
-	})
+	});
+
+	grunt.registerTask("default", ["concat", "compress", "nav", "files", "sitemap"]);
 };

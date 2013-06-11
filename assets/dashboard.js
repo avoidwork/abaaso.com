@@ -6,9 +6,8 @@
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
  * @module abaaso.com
- * @version 4.0.8
+ * @version 4.0.9
  */
-
 (function ($) {
 "use strict";
 
@@ -201,6 +200,11 @@ $.on("ready", function () {
 
 	// Setting the version number
 	$(".version")[0].html($.version);
+
+	// Setting line count
+	"http://cdn.abaaso.com/abaaso.js".get(function (arg) {
+		$("#lines").html($.number.format(arg.split("\n").length));
+	});
 });
 
 }(abaaso));

@@ -78,4 +78,9 @@ $.on("ready", function () {
 
 	// Setting the version number
 	$(".version")[0].html($.version);
+
+	// Setting line count
+	"http://cdn.abaaso.com/abaaso.js".get(function (arg) {
+		$("#lines").html($.number.format(arg.split("\n").length));
+	});
 });

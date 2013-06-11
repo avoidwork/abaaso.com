@@ -1,7 +1,7 @@
 {
   "name": "abaaso.com",
   "description": "Website for abaaso",
-  "version": "4.0.8",
+  "version": "4.0.9",
   "homepage": "https://github.com/avoidwork/abaaso.com",
   "author": {
     "name": "Jason Mulligan",
@@ -22,13 +22,16 @@
   ],
   "main": "assets/dashboard",
   "engines": {
-    "node": ">= 0.6.0"
+    "node": ">= 0.8.0"
   },
   "scripts": {
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.3.14",
+    "grunt" : "~0.4.1",
+    "grunt-cli" : "~0.1.7",
+    "grunt-contrib-concat" : "~0.3.0",
+    "grunt-shell" : ">0.0.0",
     "abaaso": ">= 3.3.0"
   },
   "keywords": []

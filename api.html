@@ -10,24 +10,11 @@
 <link rel="stylesheet" type="text/css" href="assets/style.css" media="print,screen" />
 <link rel="stylesheet" type="text/css" href="assets/styles/default.css" media="print,screen" />
 <link rel="stylesheet" type="text/css" href="assets/styles/zenburn.css" media="print,screen" />
-<script type="text/javascript" src="http://cdn.abaaso.com/abaaso.min.js"></script>
+<script type="text/javascript" src="//cdn.abaaso.com/abaaso.min.js"></script>
 <script type="text/javascript" src="assets/showdown/compressed/showdown.js"></script>
 <script type="text/javascript" src="assets/highlight.pack.js"></script>
 <script type="text/javascript" src="assets/modernizr.js"></script>
 <script type="text/javascript" src="assets/dashboard.min.js"></script>
-<script type="text/javascript">
-  var _gauges = _gauges || [];
-  (function() {
-	var t   = document.createElement('script');
-	t.type  = 'text/javascript';
-	t.async = true;
-	t.id    = 'gauges-tracker';
-	t.setAttribute('data-site-id', '4f6ca332f5a1f5583e0000d9');
-	t.src = '//secure.gaug.es/track.js';
-	var s = document.getElementsByTagName('script')[0];
-	s.parentNode.insertBefore(t, s);
-  })();
-</script>
 <!--[if lt IE 9]>
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -71,6 +58,7 @@
 						<li>abaaso() for DOM queries &amp; sugar</li>
 						<li>Familiar API</li>
 						<li>Evented with a global observer</li>
+						<li>Built on Promises/A+</li>
 					</ul>
 				</div>
 				<div class="half last">
@@ -94,6 +82,11 @@
 		</div>
 
 		<div>
+			<h2>Line Count</h2>
+			<span class="lines">?</span>
+		</div>
+
+		<div>
 			<ul id="social">
 				<li><iframe src="http://ghbtns.com/github-btn.html?user=avoidwork&repo=abaaso&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></li>
 				<li><div class="fb-like" data-href="http://abaaso.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div></li>
@@ -108,7 +101,7 @@
 		<div class="container">
 			<section class="list">
 				<h2>API</h2>
-				<ul class="api"><li><a href="wiki/Array.prototype.md" title="Array.prototype" data-filename="Array.prototype.md" data-target="api">Array</a></li><li><a href="wiki/Element.prototype.md" title="Element.prototype" data-filename="Element.prototype.md" data-target="api">Element</a></li><li><a href="wiki/Function.prototype.md" title="Function.prototype" data-filename="Function.prototype.md" data-target="api">Function</a></li><li><a href="wiki/Number.prototype.md" title="Number.prototype" data-filename="Number.prototype.md" data-target="api">Number</a></li><li><a href="wiki/String.prototype.md" title="String.prototype" data-filename="String.prototype.md" data-target="api">String</a></li><li><a href="wiki/abaaso.md" title="abaaso" data-filename="abaaso.md" data-target="api">abaaso</a></li><li><a href="wiki/array.md" title="array" data-filename="array.md" data-target="api">array</a></li><li><a href="wiki/client.md" title="client" data-filename="client.md" data-target="api">client</a></li><li><a href="wiki/cookie.md" title="cookie" data-filename="cookie.md" data-target="api">cookie</a></li><li><a href="wiki/data.md" title="data" data-filename="data.md" data-target="api">data</a></li><li><a href="wiki/datalist.md" title="datalist" data-filename="datalist.md" data-target="api">datalist</a></li><li><a href="wiki/deferred.md" title="deferred" data-filename="deferred.md" data-target="api">deferred</a></li><li><a href="wiki/element.md" title="element" data-filename="element.md" data-target="api">element</a></li><li><a href="wiki/events.md" title="events" data-filename="events.md" data-target="api">events</a></li><li><a href="wiki/filter.md" title="filter" data-filename="filter.md" data-target="api">filter</a></li><li><a href="wiki/grid.md" title="grid" data-filename="grid.md" data-target="api">grid</a></li><li><a href="wiki/json.md" title="json" data-filename="json.md" data-target="api">json</a></li><li><a href="wiki/label.md" title="label" data-filename="label.md" data-target="api">label</a></li><li><a href="wiki/loading.md" title="loading" data-filename="loading.md" data-target="api">loading</a></li><li><a href="wiki/message.md" title="message" data-filename="message.md" data-target="api">message</a></li><li><a href="wiki/mouse.md" title="mouse" data-filename="mouse.md" data-target="api">mouse</a></li><li><a href="wiki/number.md" title="number" data-filename="number.md" data-target="api">number</a></li><li><a href="wiki/observer.md" title="observer" data-filename="observer.md" data-target="api">observer</a></li><li><a href="wiki/promise.md" title="promise" data-filename="promise.md" data-target="api">promise</a></li><li><a href="wiki/route.md" title="route" data-filename="route.md" data-target="api">route</a></li><li><a href="wiki/string.md" title="string" data-filename="string.md" data-target="api">string</a></li><li><a href="wiki/timer.md" title="timer" data-filename="timer.md" data-target="api">timer</a></li><li><a href="wiki/validate.md" title="validate" data-filename="validate.md" data-target="api">validate</a></li><li><a href="wiki/xml.md" title="xml" data-filename="xml.md" data-target="api">xml</a></li></ul>
+				<ul class="api"><li><a href="wiki/Array.prototype.md" title="Array.prototype" data-filename="Array.prototype.md" data-target="api">Array</a></li><li><a href="wiki/Element.prototype.md" title="Element.prototype" data-filename="Element.prototype.md" data-target="api">Element</a></li><li><a href="wiki/Function.prototype.md" title="Function.prototype" data-filename="Function.prototype.md" data-target="api">Function</a></li><li><a href="wiki/Number.prototype.md" title="Number.prototype" data-filename="Number.prototype.md" data-target="api">Number</a></li><li><a href="wiki/String.prototype.md" title="String.prototype" data-filename="String.prototype.md" data-target="api">String</a></li><li><a href="wiki/abaaso.md" title="abaaso" data-filename="abaaso.md" data-target="api">abaaso</a></li><li><a href="wiki/array.md" title="array" data-filename="array.md" data-target="api">array</a></li><li><a href="wiki/client.md" title="client" data-filename="client.md" data-target="api">client</a></li><li><a href="wiki/cookie.md" title="cookie" data-filename="cookie.md" data-target="api">cookie</a></li><li><a href="wiki/data.md" title="data" data-filename="data.md" data-target="api">data</a></li><li><a href="wiki/datalist.md" title="datalist" data-filename="datalist.md" data-target="api">datalist</a></li><li><a href="wiki/deferred.md" title="deferred " data-filename="deferred.md" data-target="api">deferred </a></li><li><a href="wiki/element.md" title="element" data-filename="element.md" data-target="api">element</a></li><li><a href="wiki/events.md" title="events" data-filename="events.md" data-target="api">events</a></li><li><a href="wiki/filter.md" title="filter" data-filename="filter.md" data-target="api">filter</a></li><li><a href="wiki/grid.md" title="grid" data-filename="grid.md" data-target="api">grid</a></li><li><a href="wiki/json.md" title="json" data-filename="json.md" data-target="api">json</a></li><li><a href="wiki/label.md" title="label" data-filename="label.md" data-target="api">label</a></li><li><a href="wiki/loading.md" title="loading" data-filename="loading.md" data-target="api">loading</a></li><li><a href="wiki/message.md" title="message" data-filename="message.md" data-target="api">message</a></li><li><a href="wiki/mouse.md" title="mouse" data-filename="mouse.md" data-target="api">mouse</a></li><li><a href="wiki/number.md" title="number" data-filename="number.md" data-target="api">number</a></li><li><a href="wiki/observer.md" title="observer" data-filename="observer.md" data-target="api">observer</a></li><li><a href="wiki/promise.md" title="promise" data-filename="promise.md" data-target="api">promise</a></li><li><a href="wiki/route.md" title="route" data-filename="route.md" data-target="api">route</a></li><li><a href="wiki/string.md" title="string" data-filename="string.md" data-target="api">string</a></li><li><a href="wiki/timer.md" title="timer" data-filename="timer.md" data-target="api">timer</a></li><li><a href="wiki/validate.md" title="validate" data-filename="validate.md" data-target="api">validate</a></li><li><a href="wiki/xml.md" title="xml" data-filename="xml.md" data-target="api">xml</a></li></ul>
 			</section>
 			<section class="api markdown">
 				<h1>Please use the menu on the left to view the documentation</h1>
