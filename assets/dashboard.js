@@ -203,7 +203,7 @@ $.on("ready", function () {
 
 	// Setting line count
 	"http://cdn.abaaso.com/abaaso.js".get(function (arg) {
-		$("#lines").html($.number.format(arg.split("\n").length));
+		$(".lines")[0].html($.number.format(arg.split("\n").length));
 	});
 });
 
