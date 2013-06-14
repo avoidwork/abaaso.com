@@ -23,6 +23,7 @@ module.exports = function (grunt) {
 					"src/display.js",
 					"src/hash.js",
 					"src/section.js",
+					"src/spot.js",
 					"src/events.js",
 					"src/outro.js"
 				],
@@ -74,10 +75,11 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// aliases
-	grunt.registerTask("lint", ["jshint"]);
-	grunt.registerTask("test", ["nodeunit"]);
-	grunt.registerTask("build", ["concat", "sed", "exec"]);
-	grunt.registerTask("default", ["build", "test", "lint"]);
+	grunt.registerTask("test", [/*"nodeunit", */"jshint"]);
+	grunt.registerTask("build", ["concat", "sed", "exec", "nav", "files", "sitemap"]);
+	grunt.registerTask("default", ["build", "test"]);
+
+	// generates URI entry points
 	grunt.registerTask("files", function () {
 		var files = ["api", "tutorials"],
 			body  = grunt.file.read("index.html").replace('<section id="main">', '<section id="main" class="hidden">');
@@ -88,6 +90,7 @@ module.exports = function (grunt) {
 		});
 	});
 
+	// generates a sitemap.xml
 	grunt.registerTask("sitemap", function () {
 		var file    = "sitemap.xml",
 			body    = grunt.file.read(file),
@@ -101,6 +104,7 @@ module.exports = function (grunt) {
 		grunt.file.write(file, body.replace(/(lastmod\>)(.*)(<\/lastmod)/g, "$1" + dstring + "$3"));
 	});
 
+	// fills in the navigation
 	grunt.registerTask("nav", function () {
 		var file  = "index.html",
 		    body  = grunt.file.read(file),
@@ -170,6 +174,4 @@ module.exports = function (grunt) {
 			grunt.file.write(file, body);
 		});
 	});
-
-	grunt.registerTask("default", ["concat", "exec", "jshint", "nav", "files", "sitemap"]);
 };

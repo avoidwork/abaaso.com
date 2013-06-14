@@ -13,26 +13,67 @@ $.on("ready", function () {
 	// Caching
 	converter    = new Showdown.converter();
 	sections     = $("article > section");
-	var download = $("a[data-section='download']")[0];
+	var download = $("a[data-section='download']")[0],
+	    popped   = false,
+	    previous, oldHash, oldAnchor;
 
 	// HTML5 history API is available
 	if (html.hasClass("history")) {
 		// Setting back button listener
 		$.on(window, "popstate", function (e) {
-			var parsed = $.parse(location.href),
-			    page   = parsed.pathname.replace(REGEX_URI, "");
+			var parsed, page, newHash, anchor;
+
+			// Stopping bubbling
+			$.stop(e);
+
+			// Blocks a second 'load' on initialization
+			if (popped === false) {
+				popped   = true;
+				previous = page;
+				return;
+			}
+
+			parsed  = $.parse(location.href),
+			page    = parsed.pathname.replace(REGEX_URI, ""),
+			newHash = $.hash().replace(/#.*$/, ""),
+			anchor  = $.hash().match(/#(.*)/);
+
+			if (anchor instanceof Array && !anchor[1].isEmpty()) {
+				anchor = anchor[1];
+			}
 
 			if (page.isEmpty()) {
 				page = "main";
 			}
 
-			$.stop(e);
-
-			section(e.state !== null ? e.state.section : page);
 			current = page;
-			copy(current);
 
-			if (!parsed.hash.isEmpty()) {
+			// New page to display
+			if (current !== previous) {
+				previous  = current;
+				oldHash   = newHash;
+				oldAnchor = anchor;
+
+				section(page);
+				copy(current);
+
+				if (!parsed.hash.isEmpty()) {
+					hash();
+				}
+			}
+			// New hashbang, try to scroll to the current position
+			else if (oldHash !== newHash) {
+				oldHash   = newHash;
+				oldAnchor = anchor;
+
+				hash();
+			}
+			// New anchor
+			else if (oldAnchor !== anchor) {
+				oldAnchor = anchor;
+				spot($.hash());
+			}
+			else {
 				hash();
 			}
 		}, "history");

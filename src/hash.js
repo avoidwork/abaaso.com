@@ -5,16 +5,18 @@
  */
 hash = function () {
 	var hash  = $.hash(),
-	    spot  = hash.match(/#(.*)/),
 	    file  = hash.replace(/^\/wiki\/|\#.*/g, ""),
 	    valid = ($("section.active a[data-filename='" + file + "']").length > 0),
 	    obj;
 
+	// Processing the hashbang
 	if (!hash.isEmpty() && valid) {
+		// Resetting position to top
+		window.scrollTo(0, 0);
+
+		// Preparing DOM & retrieving content
 		obj = $("section.active section.markdown")[0];
 		obj.clear().addClass("loading").get(hash.replace(/\#.*/, ""), function (arg) {
-			var x;
-
 			// Filling in HTML
 			obj.removeClass("loading").html(converter.makeHtml(arg));
 
@@ -36,14 +38,7 @@ hash = function () {
 			});
 
 			// Scrolling to target entry
-			if (spot instanceof Array && !spot[1].isEmpty()) {
-				x = $("#" + spot[1]);
-
-				if (x !== undefined) {
-					// Subtracting 10px for good position relative to font
-					window.scrollTo(0, (x.position().top - 10));
-				}
-			}
+			spot(hash);
 		}, function () {
 			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
 		});

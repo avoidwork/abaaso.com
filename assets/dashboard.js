@@ -59,16 +59,18 @@ display = function (e) {
  */
 hash = function () {
 	var hash  = $.hash(),
-	    spot  = hash.match(/#(.*)/),
 	    file  = hash.replace(/^\/wiki\/|\#.*/g, ""),
 	    valid = ($("section.active a[data-filename='" + file + "']").length > 0),
 	    obj;
 
+	// Processing the hashbang
 	if (!hash.isEmpty() && valid) {
+		// Resetting position to top
+		window.scrollTo(0, 0);
+
+		// Preparing DOM & retrieving content
 		obj = $("section.active section.markdown")[0];
 		obj.clear().addClass("loading").get(hash.replace(/\#.*/, ""), function (arg) {
-			var x;
-
 			// Filling in HTML
 			obj.removeClass("loading").html(converter.makeHtml(arg));
 
@@ -90,14 +92,7 @@ hash = function () {
 			});
 
 			// Scrolling to target entry
-			if (spot instanceof Array && !spot[1].isEmpty()) {
-				x = $("#" + spot[1]);
-
-				if (x !== undefined) {
-					// Subtracting 10px for good position relative to font
-					window.scrollTo(0, (x.position().top - 10));
-				}
-			}
+			spot(hash);
 		}, function () {
 			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
 		});
@@ -127,6 +122,26 @@ section = function (arg) {
 	$("#" + arg).addClass("active").removeClass("hidden");
 };
 
+/**
+ * Scrolls to a new spot in the View
+ *
+ * @param  {String} arg Hash bang to parse
+ * @return {Undefined}  undefined
+ */
+var spot = function (arg) {
+	var id = arg.match(/#(.*)/),
+	    obj;
+
+	if (id instanceof Array && !id[1].isEmpty()) {
+		obj = $("#" + id[1]);
+
+		if (obj !== undefined) {
+			// Subtracting 10px for good position relative to font
+			window.scrollTo(0, (obj.position().top - 10));
+		}
+	}
+};
+
 // Assets are loaded
 $.on("render", function () {
 	var obj = $(".g-plusone")[0];
@@ -142,26 +157,67 @@ $.on("ready", function () {
 	// Caching
 	converter    = new Showdown.converter();
 	sections     = $("article > section");
-	var download = $("a[data-section='download']")[0];
+	var download = $("a[data-section='download']")[0],
+	    popped   = false,
+	    previous, oldHash, oldAnchor;
 
 	// HTML5 history API is available
 	if (html.hasClass("history")) {
 		// Setting back button listener
 		$.on(window, "popstate", function (e) {
-			var parsed = $.parse(location.href),
-			    page   = parsed.pathname.replace(REGEX_URI, "");
+			var parsed, page, newHash, anchor;
+
+			// Stopping bubbling
+			$.stop(e);
+
+			// Blocks a second 'load' on initialization
+			if (popped === false) {
+				popped   = true;
+				previous = page;
+				return;
+			}
+
+			parsed  = $.parse(location.href),
+			page    = parsed.pathname.replace(REGEX_URI, ""),
+			newHash = $.hash().replace(/#.*$/, ""),
+			anchor  = $.hash().match(/#(.*)/);
+
+			if (anchor instanceof Array && !anchor[1].isEmpty()) {
+				anchor = anchor[1];
+			}
 
 			if (page.isEmpty()) {
 				page = "main";
 			}
 
-			$.stop(e);
-
-			section(e.state !== null ? e.state.section : page);
 			current = page;
-			copy(current);
 
-			if (!parsed.hash.isEmpty()) {
+			// New page to display
+			if (current !== previous) {
+				previous  = current;
+				oldHash   = newHash;
+				oldAnchor = anchor;
+
+				section(page);
+				copy(current);
+
+				if (!parsed.hash.isEmpty()) {
+					hash();
+				}
+			}
+			// New hashbang, try to scroll to the current position
+			else if (oldHash !== newHash) {
+				oldHash   = newHash;
+				oldAnchor = anchor;
+
+				hash();
+			}
+			// New anchor
+			else if (oldAnchor !== anchor) {
+				oldAnchor = anchor;
+				spot($.hash());
+			}
+			else {
 				hash();
 			}
 		}, "history");
