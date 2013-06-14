@@ -65,9 +65,6 @@ hash = function () {
 
 	// Processing the hashbang
 	if (!hash.isEmpty() && valid) {
-		// Resetting position to top
-		window.scrollTo(0, 0);
-
 		// Preparing DOM & retrieving content
 		obj = $("section.active section.markdown")[0];
 		obj.clear().addClass("loading").get(hash.replace(/\#.*/, ""), function (arg) {
@@ -174,17 +171,20 @@ $.on("ready", function () {
 			// Stopping bubbling
 			$.stop(e);
 
-			// Blocks a second 'load' on initialization
-			if (popped === false) {
-				popped   = true;
-				previous = page;
-				return;
-			}
-
 			parsed  = $.parse(location.href),
 			page    = parsed.pathname.replace(REGEX_URI, ""),
 			newHash = $.hash().replace(/#.*$/, ""),
 			anchor  = $.hash().match(/#(.*)/);
+
+			// Blocks a second 'load' on initialization
+			if (popped === false) {
+				popped    = true;
+				previous  = page;
+				oldHash   = newHash;
+				oldAnchor = anchor;
+				spot($.hash());
+				return;
+			}
 
 			if (anchor instanceof Array && !anchor[1].isEmpty()) {
 				anchor = anchor[1];
@@ -205,6 +205,8 @@ $.on("ready", function () {
 				section(page);
 				copy(current);
 
+				window.scrollTo(0, 0);
+
 				if (!parsed.hash.isEmpty()) {
 					hash();
 				}
@@ -213,6 +215,8 @@ $.on("ready", function () {
 			else if (oldHash !== newHash) {
 				oldHash   = newHash;
 				oldAnchor = anchor;
+
+				window.scrollTo(0, 0);
 
 				hash();
 			}

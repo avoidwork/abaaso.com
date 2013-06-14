@@ -11,9 +11,6 @@ hash = function () {
 
 	// Processing the hashbang
 	if (!hash.isEmpty() && valid) {
-		// Resetting position to top
-		window.scrollTo(0, 0);
-
 		// Preparing DOM & retrieving content
 		obj = $("section.active section.markdown")[0];
 		obj.clear().addClass("loading").get(hash.replace(/\#.*/, ""), function (arg) {
