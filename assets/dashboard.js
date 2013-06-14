@@ -82,6 +82,13 @@ hash = function () {
 				i.attr("href", "#!/wiki/" + i.href.replace(/.*\//, "").replace("#", ".md#"));
 			});
 
+			// Making H2s into anchors / bookmarks
+			obj.find("h2").each(function (i) {
+				var text = i.text();
+
+				i.clear().create("a", {innerHTML: text, href: "#!" + hash.replace(/#\w+$/, "") + "#" + i.id});
+			});
+
 			// Scrolling to target entry
 			if (spot instanceof Array && !spot[1].isEmpty()) {
 				x = $("#" + spot[1]);

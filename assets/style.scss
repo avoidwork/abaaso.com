@@ -17,6 +17,7 @@ body {
 body {
 	font-size: $font;
 	font-family: "Josefin Sans", helvetica, arial;
+	color: #000;
 
 	> header,
 	> article,
@@ -74,6 +75,18 @@ section {
 		> *,
 		&:last-child {
 			margin-bottom: 0;
+		}
+	}
+
+	h2 {
+		a {
+			&:hover {
+				color: #000 !important;
+
+				&:after {
+					content:"#";
+				}
+			}
 		}
 	}
 
