@@ -58,7 +58,7 @@ display = function (e) {
  * @return {Undefined} undefined
  */
 hash = function () {
-	var hash  = $.hash(),
+	var hash  = decodeURIComponent($.hash()),
 	    file  = hash.replace(/^\/wiki\/|\#.*/g, ""),
 	    valid = ($("section.active a[data-filename='" + file + "']").length > 0),
 	    obj;
@@ -166,15 +166,16 @@ $.on("ready", function () {
 	if (html.hasClass("history")) {
 		// Setting back button listener
 		$.on(window, "popstate", function (e) {
-			var parsed, page, newHash, anchor;
+			var parsed, page, newHash, anchor, hashbang;
 
 			// Stopping bubbling
 			$.stop(e);
 
-			parsed  = $.parse(location.href),
-			page    = parsed.pathname.replace(REGEX_URI, ""),
-			newHash = $.hash().replace(/#.*$/, ""),
-			anchor  = $.hash().match(/#(.*)/);
+			parsed   = $.parse(location.href),
+			page     = parsed.pathname.replace(REGEX_URI, ""),
+			hashbang = decodeURIComponent($.hash());
+			newHash  = hashbang.replace(/#.*$/, ""),
+			anchor   = hashbang.match(/#(.*)/);
 
 			// Blocks a second 'load' on initialization
 			if (popped === false) {
@@ -182,7 +183,7 @@ $.on("ready", function () {
 				previous  = page;
 				oldHash   = newHash;
 				oldAnchor = anchor;
-				spot($.hash());
+				hash();
 				return;
 			}
 
@@ -223,7 +224,7 @@ $.on("ready", function () {
 			// New anchor
 			else if (oldAnchor !== anchor) {
 				oldAnchor = anchor;
-				spot($.hash());
+				spot(hashbang);
 			}
 			else {
 				hash();
