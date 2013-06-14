@@ -130,14 +130,18 @@ section = function (arg) {
  */
 var spot = function (arg) {
 	var id = arg.match(/#(.*)/),
-	    obj;
+	    obj, pos;
 
 	if (id instanceof Array && !id[1].isEmpty()) {
 		obj = $("#" + id[1]);
 
+		// Scrolling to Element if needed
 		if (obj !== undefined) {
-			// Subtracting 10px for good position relative to font
-			window.scrollTo(0, (obj.position().top - 10));
+			pos = obj.position();
+
+			if ((pos.top > document.body.scrollTop) || (pos.top < ($.position().bottom - $.client.size.height))) {
+				window.scrollTo(0, (pos.top - 10));
+			}
 		}
 	}
 };
