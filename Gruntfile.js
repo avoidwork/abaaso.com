@@ -56,11 +56,11 @@ module.exports = function (grunt) {
 		watch : {
 			js : {
 				files : "<%= concat.dist.src %>",
-				tasks : "build"
+				tasks : "default"
 			},
 			pkg: {
 				files : "package.json",
-				tasks : "build"
+				tasks : "default"
 			}
 		}
 	});
