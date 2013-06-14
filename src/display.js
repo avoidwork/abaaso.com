@@ -1,6 +1,6 @@
 /**
  * Sub-menu click handler
- * 
+ *
  * @param  {Object} e  Mouse event
  * @return {Undefined} undefined
  */

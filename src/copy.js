@@ -1,6 +1,6 @@
 /**
  * Gets or sets the copy of a section
- * 
+ *
  * @param  {String} arg Section
  * @return {Undefined}  undefined
  */

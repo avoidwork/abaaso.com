@@ -1,12 +1,12 @@
 /**
- * abaaso.com
+ * dashboard
  *
  * @author Jason Mulligan <jason.mulligan@avoidwork.com>
  * @copyright 2013 Jason Mulligan
  * @license BSD-3 <https://github.com/avoidwork/abaaso.com/blob/master/LICENSE>
  * @link https://github.com/avoidwork/abaaso.com
- * @module abaaso.com
- * @version 4.0.9
+ * @module dashboard
+ * @version 4.0.10
  */
 (function ($) {
 "use strict";
@@ -17,14 +17,14 @@ var REGEX_SECTIONS = /^(api|main|tutorials)$/,
     sections       = [],
     content        = {},
     current        = "main",
-    api, copy, converter, display, hash, section, tutorials;
+    copy, converter, display, hash, section;
 
 // Setting tabs as 4 spaces
-hljs.tabReplace = "    "; 
+hljs.tabReplace = "    ";
 
 /**
  * Gets or sets the copy of a section
- * 
+ *
  * @param  {String} arg Section
  * @return {Undefined}  undefined
  */
@@ -43,7 +43,7 @@ copy = function (arg) {
 
 /**
  * Sub-menu click handler
- * 
+ *
  * @param  {Object} e  Mouse event
  * @return {Undefined} undefined
  */
@@ -54,7 +54,7 @@ display = function (e) {
 
 /**
  * Loads the hash if it's a valid submenu item
- * 
+ *
  * @return {Undefined} undefined
  */
 hash = function () {
@@ -98,7 +98,7 @@ hash = function () {
 					window.scrollTo(0, (x.position().top - 10));
 				}
 			}
-		}, function (e) {
+		}, function () {
 			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
 		});
 	}
@@ -106,7 +106,7 @@ hash = function () {
 
 /**
  * Toggles the visible section
- * 
+ *
  * @param  {String} arg Section to view
  * @return {Undefined}  undefined
  */
@@ -133,7 +133,7 @@ $.on("render", function () {
 
 	// Fixing Google Plus positioning (nice code Google!)
 	if (obj !== undefined) {
-		obj.parentNode.find("> div")[0].css("left", "auto")
+		obj.parentNode.find("> div")[0].css("left", "auto");
 	}
 });
 

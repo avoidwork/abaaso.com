@@ -1,6 +1,6 @@
 /**
  * Toggles the visible section
- * 
+ *
  * @param  {String} arg Section to view
  * @return {Undefined}  undefined
  */

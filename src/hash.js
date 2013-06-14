@@ -1,6 +1,6 @@
 /**
  * Loads the hash if it's a valid submenu item
- * 
+ *
  * @return {Undefined} undefined
  */
 hash = function () {
@@ -44,7 +44,7 @@ hash = function () {
 					window.scrollTo(0, (x.position().top - 10));
 				}
 			}
-		}, function (e) {
+		}, function () {
 			obj.removeClass("loading").html("<h1>" + $.label.error.serverError + "</h1>");
 		});
 	}

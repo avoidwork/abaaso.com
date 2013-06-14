@@ -4,7 +4,7 @@ $.on("render", function () {
 
 	// Fixing Google Plus positioning (nice code Google!)
 	if (obj !== undefined) {
-		obj.parentNode.find("> div")[0].css("left", "auto")
+		obj.parentNode.find("> div")[0].css("left", "auto");
 	}
 });
 

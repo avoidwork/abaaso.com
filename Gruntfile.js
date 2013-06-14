@@ -29,23 +29,55 @@ module.exports = function (grunt) {
 				dest : "assets/dashboard.js"
 			}
 		},
-		shell: {
-			closure: {
-				command: "cd assets\nclosure-compiler --js dashboard.js --js_output_file dashboard.min.js --create_source_map ./dashboard.map"
+		exec : {
+			closure : {
+				cmd : "cd assets\nclosure-compiler --js <%= pkg.name %>.js --js_output_file <%= pkg.name %>.min.js --create_source_map ./<%= pkg.name %>.map"
 			},
-			sourcemap: {
-				command: "echo //@ sourceMappingURL=dashboard.map >> assets/dashboard.min.js"
+			sourcemap : {
+				cmd : "echo //@ sourceMappingURL=<%= pkg.name %>.map >> assets/<%= pkg.name %>.min.js"
+			}
+		},
+		jshint : {
+			options : {
+				jshintrc : ".jshintrc"
+			},
+			src : "assets/<%= pkg.name %>.js"
+		},
+		nodeunit : {
+			all : ["test/*.js"]
+		},
+		sed : {
+			"version" : {
+				pattern : "{{VERSION}}",
+				replacement : "<%= pkg.version %>",
+				path : ["<%= concat.dist.dest %>"]
+			}
+		},
+		watch : {
+			js : {
+				files : "<%= concat.dist.src %>",
+				tasks : "build"
+			},
+			pkg: {
+				files : "package.json",
+				tasks : "build"
 			}
 		}
 	});
 
-	grunt.loadNpmTasks("grunt-shell");
+	// tasks
+	grunt.loadNpmTasks("grunt-sed");
+	grunt.loadNpmTasks("grunt-exec");
 	grunt.loadNpmTasks("grunt-contrib-concat");
+	grunt.loadNpmTasks("grunt-contrib-nodeunit");
+	grunt.loadNpmTasks("grunt-contrib-jshint");
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask("compress", function () {
-		process.platform !== "win32" ? grunt.task.run("shell") : console.log("Couldn't compress files on your OS")
-	});
-
+	// aliases
+	grunt.registerTask("lint", ["jshint"]);
+	grunt.registerTask("test", ["nodeunit"]);
+	grunt.registerTask("build", ["concat", "sed", "exec"]);
+	grunt.registerTask("default", ["build", "test", "lint"]);
 	grunt.registerTask("files", function () {
 		var files = ["api", "tutorials"],
 			body  = grunt.file.read("index.html").replace('<section id="main">', '<section id="main" class="hidden">');
@@ -139,5 +171,5 @@ module.exports = function (grunt) {
 		});
 	});
 
-	grunt.registerTask("default", ["concat", "compress", "nav", "files", "sitemap"]);
+	grunt.registerTask("default", ["concat", "exec", "jshint", "nav", "files", "sitemap"]);
 };
