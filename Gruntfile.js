@@ -62,6 +62,10 @@ module.exports = function (grunt) {
 			pkg: {
 				files : "package.json",
 				tasks : "default"
+			},
+			idx: {
+				files : "index.html",
+				tasks : "default"
 			}
 		}
 	});
