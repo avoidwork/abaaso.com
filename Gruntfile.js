@@ -159,7 +159,8 @@ module.exports = function (grunt) {
 			"Using promises",
 			"Using application states",
 			"Iterating an Array",
-			"Iterating an Object"
+			"Iterating an Object",
+			"Using MongoDB for persistent storage"
 		];
 
 		lists.each(function (i) {
