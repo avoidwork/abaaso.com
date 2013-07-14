@@ -2,86 +2,12 @@ var $ = require("abaaso");
 
 module.exports = function (grunt) {
 	grunt.initConfig({
-		pkg : grunt.file.readJSON("package.json"),
-		concat : {
-			options : {
-				banner : "/**\n" + 
-				         " * <%= pkg.name %>\n" +
-				         " *\n" +
-				         " * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n" +
-				         " * @copyright <%= grunt.template.today('yyyy') %> <%= pkg.author.name %>\n" +
-				         " * @license <%= pkg.licenses[0].type %> <<%= pkg.licenses[0].url %>>\n" +
-				         " * @link <%= pkg.homepage %>\n" +
-				         " * @module <%= pkg.name %>\n" +
-				         " * @version <%= pkg.version %>\n" +
-				         " */\n"
-			},
-			dist : {
-				src : [
-					"src/intro.js",
-					"src/copy.js",
-					"src/display.js",
-					"src/hash.js",
-					"src/section.js",
-					"src/spot.js",
-					"src/events.js",
-					"src/outro.js"
-				],
-				dest : "assets/dashboard.js"
-			}
-		},
-		exec : {
-			closure : {
-				cmd : "cd assets\nclosure-compiler --js <%= pkg.name %>.js --js_output_file <%= pkg.name %>.min.js --create_source_map ./<%= pkg.name %>.map"
-			},
-			sourcemap : {
-				cmd : "echo //@ sourceMappingURL=<%= pkg.name %>.map >> assets/<%= pkg.name %>.min.js"
-			}
-		},
-		jshint : {
-			options : {
-				jshintrc : ".jshintrc"
-			},
-			src : "assets/<%= pkg.name %>.js"
-		},
-		nodeunit : {
-			all : ["test/*.js"]
-		},
-		sed : {
-			"version" : {
-				pattern : "{{VERSION}}",
-				replacement : "<%= pkg.version %>",
-				path : ["<%= concat.dist.dest %>"]
-			}
-		},
-		watch : {
-			js : {
-				files : "<%= concat.dist.src %>",
-				tasks : "default"
-			},
-			pkg: {
-				files : "package.json",
-				tasks : "default"
-			},
-			idx: {
-				files : "index.html",
-				tasks : "default"
-			}
-		}
+		pkg : grunt.file.readJSON("package.json")
 	});
 
-	// tasks
-	grunt.loadNpmTasks("grunt-sed");
-	grunt.loadNpmTasks("grunt-exec");
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-contrib-nodeunit");
-	grunt.loadNpmTasks("grunt-contrib-jshint");
-	grunt.loadNpmTasks('grunt-contrib-watch');
-
 	// aliases
-	grunt.registerTask("test", [/*"nodeunit", */"jshint"]);
-	grunt.registerTask("build", ["concat", "sed", "exec", "nav", "files", "sitemap"]);
-	grunt.registerTask("default", ["build", "test"]);
+	grunt.registerTask("build", ["nav", "files", "sitemap"]);
+	grunt.registerTask("default", ["build"]);
 
 	// generates URI entry points
 	grunt.registerTask("files", function () {

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<title>abaaso - RESTful JavaScript Application Framework</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="abaaso,REST,RESTful,javascript,api,framework,javascript framework,HATEOAS,hypermedia,richardson maturity model,rmm3,rmm,level 3,level three" />
+	<meta name="description" content="abaaso is a lightweight Enterprise class RESTful JavaScript framework" />
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" href="stylesheets/foundation.css">
+	<link rel="stylesheet" href="stylesheets/flexslider.css">
+	<link rel="stylesheet" href="stylesheets/animate.css">
+	<link rel="stylesheet" href="stylesheets/entypo.css">
+	<link rel="stylesheet" href="stylesheets/style.css">
+	<link rel="stylesheet" href="stylesheets/responsive.css">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+	<script src="javascripts/modernizr.foundation.js"></script>
+</head>
+
+<body>
+
+<div id="main-container">
+
+<div id="main-nav">
+	<div class="row">
+			<div class="twelve columns">
+			<div id="logo" class="left animated fadeInDown">
+				<h5 class="alt-h"><img alt="front" src="images/logo.png" /> abaaso</h5>
+			</div>
+			<div id="mobile-toggle" class="show-for-small"><i class="entypo list"></i></div>
+			<div id="nav-holder" class="right">
+				<ul>
+					<li><a href="#features-scroll" class="scroll">FEATURES</a></li>
+					<li><a href="#faq-scroll" class="scroll">FAQ</a></li>
+					<li><a href="#api-scroll" class="scroll">API</a></li>
+					<li><a href="#tutorials-scroll" class="scroll">TUTORIALS</a></li>
+					<li><a href="#download-scroll" class="scroll">DOWNLOAD</a></li>
+					<li><a href="http://codersclan.net/forum/index.php?repo_id=9"><div class="blue-btn">SUPPORT</div></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<section id="home">
+	<div class="row">
+		<div id="home-slider" class="flexslider">
+			<ul class="slides">
+				<li>
+					<div class="six columns animated fadeInUpBig slide-left hide-for-small">
+						<img alt="front" src="images/slider_1.jpg" />
+					</div>
+					<div class="six columns animated fadeInRightBig slide-right">
+						<h1 class="text-right">Powerful &amp; Simple</h1>
+						<div class="hr hide-for-small"></div>
+						<p class="right text-right  hide-for-small">Writing Enterprise quality applications can be hard work, abaaso helps by doing all the heavy lifting</p>
+						
+						<a href="#features-scroll" class="scroll"><div class="btn right">Explore Features</div></a>
+					</div>
+				</li>
+				<li>
+					<div class="six columns animated fadeInLeftBig slide-left  hide-for-small">
+						<img alt="front" src="images/slider_1.jpg" />
+					</div>
+					
+					<div class="six columns animated fadeInDownBig slide-right">
+						<h1 class="text-right">Not your Dad's MVC framework</h1>
+						<div class="hr  hide-for-small"></div>
+						<p class="right text-right  hide-for-small">abaaso is pure OOP JavaScript with a little syntactic sugar to make your code sweeter</p>
+						<a href="#api-scroll" class="scroll"><div class="btn right">View API</div></a>
+					</div>
+				</li>
+				<li>
+					<div class="six columns animated fadeInLeftBig slide-left  hide-for-small">
+						<img alt="front" src="images/slider_1.jpg" />
+					</div>
+					<div class="six columns animated fadeInDownBig slide-right">
+						<h1 class="text-right">It works everywhere!</h1>
+						<div class="hr  hide-for-small"></div>
+						<p class="right text-right  hide-for-small">Whether you need to write a reactive GUI on for desktops &amp; mobile devices, or create a powerful set of APIs on the server with node.js, abaaso has you covered</p>
+						<a href="#faq-scroll" class="scroll"><div class="btn right">View FAQ</div></a>
+					</div>
+				</li>
+				<li>
+					<div class="six columns animated fadeInLeftBig slide-left  hide-for-small">
+						<img alt="front" src="images/slider_4.jpg" />
+					</div>
+					<div class="six columns animated fadeInDownBig slide-right">
+						<h1 class="text-right">Use MongDB for Persistent Storage</h1>
+						<div class="hr  hide-for-small"></div>
+						<p class="right text-right  hide-for-small">On the Server, DataStores can be wired to MongoDB by configuration for persistent storage, providing an in RAM cache layer</p>
+						<a href="#tutorials-scroll" class="scroll"><div class="btn right">View Tutorials</div></a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<a id="features-scroll"></a>
+<section id="feature-list" class="even-section">
+	<div class="row inner-section section-preamble text-center animated fadeInDown">
+		<h2>Features that'll make you love writing your app</h2>
+		<p>abaaso strives to provide an ideal environment, by extending native prototypes with syntactic sugar</p>
+		<div class="hr"></div>
+	</div>
+	<div class="row feature-row inner-section flyIn">
+		<div class="three columns feature text-center">
+			<i class="entypo-social github icon"></i>
+			<h4 class="alt-h">FREE FOREVER</h4>
+			<p>Hosted on GitHub, &amp; BSD-3 licensed so you can build a retail application on top without concern</p>
+		</div>
+		<div class="three columns feature text-center">
+			<i class="entypo thumbs-up icon"></i>
+			<h4 class="alt-h">MAKES THINGS EASIER</h4>
+			<p>Simplifies the complex nature of retrieving data and displaying it with DataStores, DataLists &amp; DataGrids</p>
+		</div>
+		<div class="three columns feature text-center">
+			<i class="entypo check icon"></i>
+			<h4 class="alt-h">BUILT ON PROMISES</h4>
+			<p>Under the hood Promises/A+ are used for handling async I/O</p>
+		</div>
+		<div class="three columns feature text-center">
+			<i class="entypo open-book icon"></i>
+			<h4 class="alt-h">QUICK TO LEARN</h4>
+			<p>Familiar API helps Developers pick up the framework quickly</p>
+		</div>
+	</div>
+</section>
+
+<a id="faq-scroll"></a>
+<section id="faq" class="odd-section">
+	<div class="row inner-section section-preamble text-center flyIn">
+		<h2>Frequently Asked Questions</h2>
+		<p>Please consider using the paid support if Your question isn't answered</p>
+		<div class="hr"></div>
+	</div>
+	<div class="row inner-section">
+		<div class="four columns fast-anim flyIn">
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">What's supported?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>Microsoft Internet Explorer 8+ (standards)<br />
+						Google Chrome 6+ / Android 2.3+<br />
+						Mozilla FireFox 3.6+<br />
+						Apple Safari 5+ / iPhone / iPod Touch / iPad<br />
+						HTML5 browsers (smart phones, TVs, etc.)<br />
+						AMD loaders (require.js, cujo.js, etc.)<br />
+						node.js 0.8.0+ (npm install abaaso)</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">What's a DataStore?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>DataStores are a NoSQL database in RAM, which can provide RESTful abstraction of a Server API (collection).</p>
+					<p>1-n relationships exists with DataLists and DataGrids, e.g. each view can be filtered and/or templated differently.</p>
+					<p>All I/O methods return Deferreds.</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">View of a DataStore?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>Reactive views can be created with DataLists or DataGrids. DataGrids provide the "classic" sortable column/row output, while DataLists create templated UL lists.</p>
+					<p>The DOM is created with interoperability in mind.</p>
+					<p>Filtering via input field, as well as case sensitive, case insensitive, &amp; mixed sensitivity sorting are optional features.</p>
+				</div>	
+			</div>
+		</div>
+		<div class="four columns flyIn">
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">How do I do AJAX?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>Strings have the HTTP verbs as methods, e.g. '"http://abaaso.com".get(success, failure);', providing a natural syntax for common Server interactions.</p>
+					<p>Deferreds are returned from these methods.</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">How do I use MongoDB?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>DataStores can be wired to MongoDB by setting a connection string for "data.mongodb".</p>
+					<p>You should enable "data.autosave" so MongoDB is updated when the DataStore changes. The ID ("data.parentNode.id") will be the name of the Collection in MongoDB, and the "key" will be "_id".</p>
+					<p>Data can be retrieved with "data.restore()", and saved with "data.save()".</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">Why not MVC?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>JavaScript is a prototypal OOP language, and I think it makes the most sense to follow that design.</p>
+					<p>Plus, there's a ton of great MVC frameworks out there already.</p>
+				</div>	
+			</div>
+		</div>
+		<div class="four columns slow-anim flyIn">
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">Deferreds / Promises?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>Promises are a design pattern for handling async I/O, providing an eventual outcome. Promises return new Promises, creating a hierarchical relationship that can be forked by returning a new Promise, and reconciled from either Parent or Child.</p>
+					<p>Deferreds are extended Promises with more behaviour, allowing tail calls upon "done" or "fail", &amp; "always".</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">Why extend prototypes?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>abaaso's nature is to be everywhere. It hooks into the native Objects to fill perceived gaps of functionality, and offer it's own subset.</p>
+					<p>It's done in a "safe" way so any other library or framework can "take" the hook for itself.</p>
+				</div>	
+			</div>
+			<div class="question-holder">
+				<div class="question">
+					<i class="entypo circled-help text-white">&nbsp;</i><span class="text-white">How is this different?</span><i class="entypo chevron-thin-down text-white show-question"></i>
+				</div>
+				<div class="answer animated">
+					<p>abaaso provides much of the features of retail application frameworks at a fraction of the payload size, while being completely free.</p>
+					<p>It isn't meant to replace jQuery or zepto, it's an alternative to Sencha ExtJS or KendoUI. It's self reliant and DOM centric, allowing you to easily leverage UI frameworks like Bootstrap.</p>
+					<p>You can get most of the feature set by combining popular libraries together, but the result won't work as smoothly.</p>
+				</div>	
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="newsletter">
+	<div class="row inner-section">
+		<div class="seven columns">
+			<i class="entypo newspaper">&nbsp;</i>
+			<div id="newsletter-text">
+				<h3 class="text-white">Give us your email to receive major news, you know you want to!</h3>	
+			</div>
+		</div>
+		<div class="five columns">
+			<div class="details-error-wrap hide">Please enter a valid email address</div>
+			<input class="newsletter-email left" type="text" placeholder="Your Email Address" />
+			<input class="newsletter-btn left btn form-send" type="submit" value="Subscribe" />
+			<div class="hide green-btn newsletter-btn left btn form-sent">Subscribed</div>
+		</div>
+	</div>
+</section>
+
+<a id="api-scroll"></a>
+<section id="api" class="even-section">
+	<div class="row inner-section section-preamble text-center flyIn">
+		<h2>API Documentation</h2>
+		<p>Documentation is open for edits on <a href="https://github.com/avoidwork/abaaso/wiki">GitHub</a>, feel free to add content or examples</p>
+		<div class="hr"></div>
+	</div>
+	<div class="row inner-section">	
+		<div class="three columns price-table fast-anim flyIn">
+			{{NAV_API}}
+		</div>
+
+		<div class="eight columns price-table fast-anim flyIn">
+			{{BODY_API}}
+		</div>
+	</div>
+</section>
+
+<a id="tutorials-scroll"></a>
+<section id="tutorials" class="odd-section">
+	<div class="row inner-section section-preamble text-center flyIn">
+		<h2>Tutorials</h2>
+		<p>Tutorials are open for edits on <a href="https://github.com/avoidwork/abaaso/wiki">GitHub</a>, feel free to add content or examples</p>
+		<div class="hr"></div>
+	</div>
+	<div class="row inner-section">	
+		<div class="three columns price-table fast-anim flyIn">
+			{{NAV_API}}
+		</div>
+
+		<div class="eight columns price-table fast-anim flyIn">
+			{{BODY_API}}
+		</div>
+	</div>
+</section>
+
+<a id="download-scroll"></a>
+<section id="download" class="even-section">
+	<div class="row inner-section section-preamble text-center flyIn">
+		<h2>Download latest stable version <span id="version"</span></h2>
+		<p>Previous versions are available on <a href="https://github.com/avoidwork/abaaso/releases">GitHub</a></p>
+		<div class="hr"></div>
+	</div>
+	<div class="row inner-section">
+		<div class="four columns price-table text-center flyIn">
+			<div class="price-heading">
+				<h4 class="text-white">Development</h4>
+			</div>
+			<div class="price-purchase">
+				<a href="http://cdn.abaaso.com/abaaso.js"><div class="red-btn btn">Click Here</div></a>
+			</div>
+		</div>
+		<div class="four columns price-table text-center slow-anim flyIn">
+			<div class="price-heading">
+				<h4 class="text-white">Production</h4>
+			</div>
+			<div class="price-purchase">
+				<a href="http://cdn.abaaso.com/abaaso.min.js"><div class="red-btn btn">Click Here</div></a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="footer">
+	<div class="row inner-section">
+		<div class="three columns">
+			<h5 class="footer-title">NAVIGATE</h5>
+			<ul>
+				<li><a href="#features-scroll" class="scroll">FEATURES</a></li>
+				<li><a href="#api-scroll" class="scroll">API</a></li>
+				<li><a href="#download-scroll" class="scroll">DOWNLOAD</a></li>
+				<li><a href="#faq-scroll" class="scroll">FAQ</a></li>
+				<li><a href="#tutorials-scroll" class="scroll">TUTORIALS</a></li>
+				<li><a href="http://codersclan.net/forum/index.php?repo_id=9">SUPPORT</a></li>
+			</ul>
+		</div>
+		<div class="three columns">
+			<h5 class="footer-title">ABOUT</h5>
+			<p>abaaso is a personal project inspired by the desire to offer a rich client experience</p>
+			<p>It's designed to be used in conjunction with UI frameworks</p>
+		</div>
+		<div class="three columns">
+			<h5 class="footer-title">STAY INFORMED</h5>
+			<div class="details-error-wrap hide">Please enter a valid email address</div>
+			<input class="newsletter-email left" type="text" placeholder="Your Email Address" />
+			<input class="newsletter-btn right btn form-send" type="submit" value="Subscribe" />
+			<div class="hide green-btn newsletter-btn right btn form-sent">Subscribed</div>
+		</div>
+		<div class="three columns text-right">
+			<h5 class="footer-title">CONTACT</h5>
+			<div class="footer-social">
+				<a href="mailto:jason@attack.io"><i class="entypo mail text-white"></i></a>
+				<a href="http://twitter.com/abaaso"><i class="entypo-social twitter text-white"></i></a>
+			</div>
+			<h3 class="footer-title">abaaso</h3>
+		</div>
+	</div>
+</section>
+
+</div>
+
+<!-- Included JS Files (Compressed) -->
+<script type="text/javascript" src="javascripts/foundation.min.js"></script>
+
+<!-- Initialize JS Plugins -->
+<script type="text/javascript" src="javascripts/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="javascripts/inview.js"></script>
+<script type="text/javascript" src="javascripts/smooth-scroll.js"></script>
+<script type="text/javascript" src="javascripts/scripts.js"></script>
+
+<!-- Pulling in CDN asset -->
+<script src="http://cdn.abaaso.com/abaaso.min.js"></script>
+<script type="text/javascript">
+(function ($) {
+	$("#version").html($.version);
+})(abaaso);
+</script>
+</body>
+
+</html>
