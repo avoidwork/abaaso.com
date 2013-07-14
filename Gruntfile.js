@@ -6,17 +6,17 @@ module.exports = function (grunt) {
 	});
 
 	// aliases
-	grunt.registerTask("build", ["nav", "files", "sitemap"]);
+	grunt.registerTask("build", ["files"/*, "nav", "sitemap"*/]);
 	grunt.registerTask("default", ["build"]);
 
 	// generates URI entry points
 	grunt.registerTask("files", function () {
-		var files = ["api", "tutorials"],
-			body  = grunt.file.read("index.html").replace('<section id="main">', '<section id="main" class="hidden">');
+		var files = ["index"],
+			body  = grunt.file.read("template.html");
 
 		files.forEach(function (i) {
 			console.log("Creating " + i + ".html");
-			grunt.file.write(i + ".html", body.replace(RegExp('<section id="' + i + '" class="hidden">'), '<section id="' + i + '"  class="active">'));
+			grunt.file.write(i + ".html", body);
 		});
 	});
 
