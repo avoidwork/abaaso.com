@@ -12,6 +12,10 @@
 	overflow: hidden;
 }
 
+h2 i.entypo {
+	font-size: 1.5em !important;
+}
+
 /************** GENERAL & PSEUDO CLASSES ****************/
 
 input {
