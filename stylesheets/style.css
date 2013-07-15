@@ -29,16 +29,6 @@ ul.tutorials li {
 	margin-bottom: 5px;
 }
 
-.blue-btn a,
-.blue-btn a {
-	color: #fff;
-}
-
-.blue-btn:hover,
-.blue-btn:hover {
-	color: #000;
-}
-
 /************** GENERAL & PSEUDO CLASSES ****************/
 
 input {
@@ -220,6 +210,15 @@ section{
 
 #main-nav .blue-btn{
 	top: -10px;
+}
+
+#main-nav .blue-btn a{
+	color: #fff;
+}
+
+#main-nav .blue-btn:hover{
+	top: -5px;
+	border-bottom: 0px solid #4aa89f;
 }
 
 /*************** HOME STYLES ******************/

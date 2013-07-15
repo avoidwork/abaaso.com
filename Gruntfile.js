@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 	});
 
 	// aliases
-	grunt.registerTask("build", [/*"files", "nav",*/ "sitemap"]);
+	grunt.registerTask("build", ["files", /*"nav",*/ "sitemap"]);
 	grunt.registerTask("default", ["build"]);
 
 	// generates URI entry points
