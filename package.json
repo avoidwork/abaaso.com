@@ -30,7 +30,8 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-cli": "~0.1.7",
-    "abaaso": "~3.8.3"
+    "abaaso": "~3.8.3",
+    "showdown": "~0.3.1"
   },
   "keywords": []
 }

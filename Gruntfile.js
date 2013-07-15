@@ -1,4 +1,6 @@
-var $ = require("abaaso");
+var $         = require("abaaso"),
+    Showdown  = require("showdown"),
+    converter = new Showdown.converter();
 
 module.exports = function (grunt) {
 	grunt.initConfig({
@@ -6,7 +8,7 @@ module.exports = function (grunt) {
 	});
 
 	// aliases
-	grunt.registerTask("build", ["files", "nav"/*, "sitemap"*/]);
+	grunt.registerTask("build", [/*"files", "nav",*/ "sitemap"]);
 	grunt.registerTask("default", ["build"]);
 
 	// generates URI entry points
@@ -98,7 +100,7 @@ module.exports = function (grunt) {
 
 			nav[i].each(function (p) {
 				var filename = p.hyphenate() + ".md",
-				    content  = grunt.file.read("wiki/" + filename),
+				    content  = converter.makeHtml(grunt.file.read("wiki/" + filename)/*.replace(/```javascript/g, "```\n")*/),
 				    html1, html2;
 
 				html1 = tpl.replace("{{list}}", i).replace(/\{\{display\}\}/g, p.replace(".prototype", "")).replace(/\{\{target\}\}/g, p.replace("Prototype", "").toCamelCase());
