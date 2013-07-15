@@ -16,6 +16,18 @@ h2 i.entypo {
 	font-size: 1.5em !important;
 }
 
+ul.api,
+ul.tutorials {
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+}
+
+ul.api li,
+ul.tutorials li {
+	list-style: none;
+}
+
 /************** GENERAL & PSEUDO CLASSES ****************/
 
 input {

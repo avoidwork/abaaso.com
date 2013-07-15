@@ -6,7 +6,7 @@ module.exports = function (grunt) {
 	});
 
 	// aliases
-	grunt.registerTask("build", ["files"/*, "nav", "sitemap"*/]);
+	grunt.registerTask("build", ["files", "nav"/*, "sitemap"*/]);
 	grunt.registerTask("default", ["build"]);
 
 	// generates URI entry points
@@ -40,7 +40,8 @@ module.exports = function (grunt) {
 		    body  = grunt.file.read(file),
 		    lists = ["api", "tutorials"],
 		    nav   = {api: [], turtorials: []},
-		    tpl   = "<li><a href=\"{{url}}\" title=\"{{name}}\" data-filename=\"{{filename}}\" data-target=\"{{target}}\">{{display}}</a></li>";
+		    tpl   = "<li><a href=\"#\" title=\"View {{display}}\" data-target=\"{{target}}\">{{display}}</a></li>",
+		    tpl2  = "<div class=\"eight columns price-table fast-anim flyIn hide {{item}}\">{{content}}</div>";
 
 		nav.api = [
 			"Array.prototype",
@@ -90,19 +91,27 @@ module.exports = function (grunt) {
 		];
 
 		lists.each(function (i) {
-			var li    = [],
-			    regex = new RegExp("(<ul class=\"" + i + "\">)(.*)(<\/ul>)");
+			var li_nav  = [],
+			    li_copy = [],
+			    regex   = new RegExp("(<ul class=\"" + i + "\">)(.*)(<\/ul>)"),
+			    regex2  = new RegExp("{{CONTENT_" + i.toUpperCase() + "}}");
 
 			nav[i].each(function (p) {
 				var filename = p.hyphenate() + ".md",
-				    html     = tpl;
+				    content  = grunt.file.read("wiki/" + filename),
+				    html1, html2;
 
-				html = html.replace(/\{\{url\}\}/g, "wiki/" + filename).replace(/\{\{name\}\}/g, p).replace(/\{\{filename\}\}/g, filename).replace(/\{\{target\}\}/g, i).replace(/\{\{display\}\}/g, p.replace(".prototype", ""));
-				li.push(html);
+				html1 = tpl.replace(/\{\{display\}\}/g, p.replace(".prototype", "")).replace(/\{\{target\}\}/g, p.replace("Prototype", "").toCamelCase());
+				li_nav.push(html1);
+
+				html2 = tpl2.replace("{{item}}", p.replace("Prototype", "").toCamelCase()).replace("{{content}}", content);
+				li_copy.push(html2);
 			});
 
-			body = body.replace(regex, "$1" + li.join("") + "$3");
-			grunt.file.write(file, body);
+			body = body.replace(regex, "$1" + li_nav.join("") + "$3");
+			body = body.replace(regex2, li_copy.join("\n"));
 		});
+
+		grunt.file.write(file, body);
 	});
 };

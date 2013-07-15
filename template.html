@@ -266,12 +266,14 @@
 	</div>
 	<div class="row inner-section">	
 		<div class="three columns price-table fast-anim flyIn">
-			{{NAV_API}}
+			<ul class="api"></ul>
 		</div>
 
-		<div class="eight columns price-table fast-anim flyIn">
-			{{BODY_API}}
+		<div class="eight columns price-table fast-anim flyIn active">
+			<p>All examples assume `abaaso` is passed to an immediately invoked function expression (IIFE) as `$`</p>
 		</div>
+
+		{{CONTENT_API}}
 	</div>
 </section>
 
@@ -284,12 +286,14 @@
 	</div>
 	<div class="row inner-section">	
 		<div class="three columns price-table fast-anim flyIn">
-			{{NAV_API}}
+			<ul class="tutorials"></ul>
 		</div>
 
-		<div class="eight columns price-table fast-anim flyIn">
-			{{BODY_API}}
+		<div class="eight columns price-table fast-anim flyIn active">
+			<p>All examples assume `abaaso` is passed to an immediately invoked function expression (IIFE) as `$`</p>
 		</div>
+
+		{{CONTENT_TUTORIALS}}
 	</div>
 </section>
 
@@ -368,7 +372,7 @@
 <script type="text/javascript" src="javascripts/scripts.js"></script>
 
 <!-- Pulling in CDN asset -->
-<script src="http://cdn.abaaso.com/abaaso.min.js"></script>
+<script type="text/javascript" src="http://cdn.abaaso.com/abaaso.min.js"></script>
 <script type="text/javascript">
 (function ($) {
 	$("#version").html($.version);

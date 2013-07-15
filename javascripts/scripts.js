@@ -62,6 +62,26 @@ $(document).ready(function () {
         }
     });
 
+    // API Documentation
+    $("ul.api").on("click", function (e) {
+        e.preventDefault();
+
+        if ( e.target.nodeName === "A") {
+            $("#api div.active").addClass("hide").removeClass("active");
+            $("#api div." + $(e.target).data("target")).removeClass("hide").addClass("active");
+        }
+    });
+
+    // Tutorials Documentation
+    $("ul.tutorials").on("click", function (e) {
+        e.preventDefault();
+
+        if ( e.target.nodeName === "A") {
+            $("#tutorials div.active").addClass("hide").removeClass("active");
+            $("#tutorials div." + $(e.target).data("target")).removeClass("hide").addClass("active");
+        }
+    });
+
     //Contact Form Code:
     $(function () {
         $(".form-send").click(function (e) {
