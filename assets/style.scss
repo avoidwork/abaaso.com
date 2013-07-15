@@ -1,4 +1,4 @@
-$width: 950px;
+$width: 1200px;
 $font: 14pt;
 $increment: 50px;
 
@@ -40,7 +40,7 @@ header {
 
 	h1 {
 		display: inline-block;
-		line-height: 0pt;
+		margin: 0;
 	}
 }
 
@@ -91,7 +91,7 @@ section {
 	}
 
 	&.list {
-		width: $increment * 3;
+		width: $increment * 4;
 		margin-right: $increment;
 		display: inline-block;
 		float: left;
@@ -100,7 +100,7 @@ section {
 
 	&.markdown {
 		float: left;
-		width: $increment * 15;
+		width: $increment * 19;
 		overflow: hidden;
 		min-height: $increment * 2;
 
@@ -182,7 +182,7 @@ footer {
 
 	.box {
 		padding: 2em 0 2em 0;
-		width: 278px;
+		width: 366px;
 		float: left;
 		background: #e4e4e4;
 		text-align: center;
@@ -204,12 +204,16 @@ footer {
 	}
 }
 
+.center {
+	text-align: center;
+}
+
 .container {
 	display: inline-block;
 }
 
 .half {
-	width: $increment * 9;
+	width: $increment * 11.5;
 	margin-right: $increment;
 	display: inline-block;
 	float: left;
@@ -217,6 +221,11 @@ footer {
 	&:last-child {
 		margin-right: 0;
 	}
+}
+
+.inline {
+	display: inline-block;
+	margin-right: $increment / 5;
 }
 
 .github {
