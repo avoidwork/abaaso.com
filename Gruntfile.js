@@ -40,7 +40,7 @@ module.exports = function (grunt) {
 		    body  = grunt.file.read(file),
 		    lists = ["api", "tutorials"],
 		    nav   = {api: [], turtorials: []},
-		    tpl   = "<li><a href=\"#\" title=\"View {{display}}\" data-target=\"{{target}}\">{{display}}</a></li>",
+		    tpl   = "<li><a href=\"#{{list}}-scroll\" class=\"scroll\" title=\"View {{display}}\"\"><div class=\"blue-btn\" data-target=\"{{target}}\">{{display}}</div></a></li>",
 		    tpl2  = "<div class=\"eight columns price-table fast-anim flyIn hide {{item}}\">{{content}}</div>";
 
 		nav.api = [
@@ -101,7 +101,7 @@ module.exports = function (grunt) {
 				    content  = grunt.file.read("wiki/" + filename),
 				    html1, html2;
 
-				html1 = tpl.replace(/\{\{display\}\}/g, p.replace(".prototype", "")).replace(/\{\{target\}\}/g, p.replace("Prototype", "").toCamelCase());
+				html1 = tpl.replace("{{list}}", i).replace(/\{\{display\}\}/g, p.replace(".prototype", "")).replace(/\{\{target\}\}/g, p.replace("Prototype", "").toCamelCase());
 				li_nav.push(html1);
 
 				html2 = tpl2.replace("{{item}}", p.replace("Prototype", "").toCamelCase()).replace("{{content}}", content);

@@ -66,7 +66,7 @@ $(document).ready(function () {
     $("ul.api").on("click", function (e) {
         e.preventDefault();
 
-        if ( e.target.nodeName === "A") {
+        if ( e.target.nodeName === "DIV") {
             $("#api div.active").addClass("hide").removeClass("active");
             $("#api div." + $(e.target).data("target")).removeClass("hide").addClass("active");
         }
@@ -76,7 +76,7 @@ $(document).ready(function () {
     $("ul.tutorials").on("click", function (e) {
         e.preventDefault();
 
-        if ( e.target.nodeName === "A") {
+        if ( e.target.nodeName === "DIV") {
             $("#tutorials div.active").addClass("hide").removeClass("active");
             $("#tutorials div." + $(e.target).data("target")).removeClass("hide").addClass("active");
         }
