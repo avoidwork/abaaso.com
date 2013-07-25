@@ -136,6 +136,7 @@ module.exports = function (grunt) {
 			"json",
 			"label",
 			"loading",
+			"lru",
 			"message",
 			"mouse",
 			"number",
