@@ -61,7 +61,7 @@ $.on("ready", function () {
 				section(page);
 				copy(current);
 
-				window.scrollTo(0, 0);
+				$.scroll([0, 0]);
 
 				if (!parsed.hash.isEmpty()) {
 					hash();
@@ -72,7 +72,7 @@ $.on("ready", function () {
 				oldHash   = newHash;
 				oldAnchor = anchor;
 
-				window.scrollTo(0, 0);
+				$.scroll([0, 0]);
 
 				hash();
 			}
