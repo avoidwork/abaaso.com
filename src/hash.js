@@ -4,7 +4,7 @@
  * @return {Undefined} undefined
  */
 hash = function () {
-	var hash  = decodeURIComponent($.hash()),
+	var hash  = decodeURIComponent($.hash()).replace( /^\#\!/, ""),
 	    file  = hash.replace(/^\/wiki\/|\#.*/g, ""),
 	    valid = ($("section.active a[data-filename='" + file + "']").length > 0),
 	    obj;
