@@ -126,14 +126,13 @@ section = function (arg) {
  * @return {Undefined}  undefined
  */
 var spot = function (arg) {
-	var id = arg.match(/#(.*)/),
+	var id = arg.replace( /.*#/, "" ),
 	    obj;
 
-	if (id instanceof Array && !id[1].isEmpty()) {
-		obj = $("#" + id[1]);
+	if ( !id.isEmpty() ) {
+		obj = $("#" + id);
 
-		// Scrolling to Element if needed
-		if (obj !== undefined) {
+		if ( obj ) {
 			obj.scrollTo();
 		}
 	}
