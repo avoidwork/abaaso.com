@@ -28,7 +28,7 @@ $.on("ready", function () {
 
 			parsed   = $.parse(location.href),
 			page     = parsed.pathname.replace(REGEX_URI, ""),
-			hashbang = decodeURIComponent($.hash());
+			hashbang = decodeURIComponent($.hash()).replace(/^\#\!/, "");
 			newHash  = hashbang.replace(/#.*$/, ""),
 			anchor   = hashbang.match(/#(.*)/);
 

@@ -142,7 +142,6 @@ module.exports = function (grunt) {
 			"number",
 			"observer",
 			"promise",
-			"route",
 			"string",
 			"timer",
 			"validate",
